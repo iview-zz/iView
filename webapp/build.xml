@@ -1,0 +1,139 @@
+<!-- ***********************************************************************
+*  Cyberoam iView - The Intelligent logging and reporting solution that 
+*  provides network visibility for security, regulatory compliance and 
+*  data confidentiality 
+*  Copyright  (C ) 2009  Elitecore Technologies Ltd.
+*  
+*  This program is free software: you can redistribute it and/or modify 
+*  it under the terms of the GNU General Public License as published by 
+*  the Free Software Foundation, either version 3 of the License, or
+*  (at your option) any later version.
+*  
+*  This program is distributed in the hope that it will be useful, but 
+*  WITHOUT ANY WARRANTY; without even the implied warranty of 
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU 
+*  General Public License for more details.
+*  
+*  You should have received a copy of the GNU General Public License 
+*  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*  
+*  The interactive user interfaces in modified source and object code 
+*  versions of this program must display Appropriate Legal Notices, as 
+*  required under Section 5 of the GNU General Public License version 3.
+*  
+*  In accordance with Section 7(b) of the GNU General Public License 
+*  version 3, these Appropriate Legal Notices must retain the display of
+*   the "Cyberoam Elitecore Technologies Initiative" logo.
+*********************************************************************** -->
+<!--iView Build File
+    @author: narendrashah,Cyberoam iView Team. 
+    @Date:28th May 2009 
+    @Modified:28th August 2009 
+-->
+<project name="Cyberoam iView" default="build" basedir=".">
+
+<!-- =============================== Help =============================== -->
+  <target name="help">
+    <echo message=""/>
+    <echo message="ANT build targets for iView"/>
+    <echo message="The following targets are available:"/>
+    <echo message=""/>
+    <echo message="  build      Create the iView build(Default)"/>
+    <echo message="  clean      Clean the build directories"/>
+    <echo message="  deploy -Ddeploy.dir=[deployment directory path]    Move generated war file to release location"/>
+  </target>
+
+<!-- ==================== Initialization properties ===================== -->
+<target name='init'> 
+        <property file='${user.home}/build.properties'/>
+        <property name='app.name' value='ROOT'/>
+        <property name='src.dir' location='src'/>
+        <property name='lib.dir' location='lib'/>
+        <property name='build.dir' location='build'/>
+        <property name='classes.dir' location='${build.dir}/classes'/>
+        <property name='dist.dir' location='${build.dir}/dist'/>
+        <property name='gen_src.dir' location='${build.dir}/gen_src'/>
+</target>
+
+<!-- ==================== Create Directory for build ===================== -->
+<target name='initdirs' depends='init'>
+        <mkdir dir='${classes.dir}'/>
+        <mkdir dir='${gen_src.dir}'/>
+        <mkdir dir='${dist.dir}'/>
+</target>
+
+
+<!-- ==================== Compile Java Source ===================== -->
+<target name='compile' depends='initdirs'>
+        <javac srcdir='${src.dir}/java' destdir='${classes.dir}'  debug="on">
+          <classpath>
+            <fileset dir='${lib.dir}/development' includes='*.jar'/>
+            <fileset dir='${lib.dir}/production' includes='*.jar'/>
+          </classpath>
+        </javac>
+</target>
+
+<!-- ==================== Generate and Compile JSP,web.xml Source ===================== -->
+<target name="jspc" depends="compile">
+    <taskdef classname="org.apache.jasper.JspC" name="jasper2">
+        <classpath id="jspc.classpath">
+            <fileset dir="${lib.dir}/development">
+                <include name="*.jar"/>
+            </fileset>
+            <fileset dir="${lib.dir}/production">
+                <include name="*.jar"/>
+            </fileset>
+        </classpath>
+    </taskdef>
+    <jasper2 validateXml="false" uriroot="${src.dir}/web" webXmlFragment="${gen_src.dir}/webinc.xml" outputDir="${gen_src.dir}"/>
+    <concat destfile="${gen_src.dir}/web.xml"  force="yes" >
+         <fileset file="${src.dir}/web/WEB-INF/web_head.xml" />
+         <fileset file="${gen_src.dir}/webinc.xml" />
+         <fileset file="${src.dir}/web/WEB-INF/web_tail.xml" /> 
+    </concat>
+    <javac srcdir='${gen_src.dir}' destdir='${classes.dir}'  debug="on">
+          <classpath>
+            <fileset dir='${lib.dir}/development' includes='*.jar'/>
+            <fileset dir='${lib.dir}/production' includes='*.jar'/>
+          </classpath>
+    </javac>
+</target>
+
+<!-- ==================== Unzip onlinehelp.zip Source===================== -->
+<target name='extracthelp'>
+       <unzip src="${src.dir}/docs/onlinehelp.zip" dest="${build.dir}/docs"/>
+</target>
+
+<!-- ==================== Generate war file Source===================== -->
+<target name='war' depends='jspc,extracthelp'>
+        <war destFile='${dist.dir}/${app.name}.war' webxml='${gen_src.dir}/web.xml'>
+          <classes dir='${classes.dir}'/> 
+          <zipfileset dir='${lib.dir}/production' includes='*.jar' prefix='WEB-INF/lib' />
+          <zipfileset dir='${src.dir}/properties' includes='*.*' prefix='WEB-INF/classes'/> 
+          <fileset dir='${src.dir}/web' excludes='**/*.jsp,WEB-INF/*.xml' /> 
+          <fileset dir='${build.dir}/docs' /> 
+        </war>
+</target>
+
+<!-- ==================== Generate war ===================== -->
+<target name='build' depends='war' description='compile and create the war' />
+
+<!-- ==================== Clean build directory ===================== -->
+<target name='clean' depends='init' description='Use for a clean build'>
+        <delete dir='${build.dir}' />
+</target>
+
+<!-- ==================== Clean and build process ===================== -->
+<target name='ffbuild' depends='clean, build' description='clean and create the war'/>
+
+<!-- ==================== Deploy given generated war file to given directory===================== -->
+<target name='deploy' depends='initdirs' description='copy the war file to the app server'>
+        <delete verbose='true' dir='${deploy.dir}/${app.name}'/>
+        <delete verbose='true' dir='${deploy.dir}/../application-deployments/default/${app.name}'/>
+        <delete verbose='true' file='${deploy.dir}/${app.name}.war' />
+        <fail unless='deploy.dir' message='build.properties must exist in your home directory and define deploy.dir' />
+        <copy todir='${deploy.dir}' file='${dist.dir}/${app.name}.war'/>
+</target>
+
+</project>
+

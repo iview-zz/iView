@@ -1,0 +1,370 @@
+/* ***********************************************************************
+*  Cyberoam iView - The Intelligent logging and reporting solution that 
+*  provides network visibility for security, regulatory compliance and 
+*  data confidentiality 
+*  Copyright  (C ) 2009  Elitecore Technologies Ltd.
+*  
+*  This program is free software: you can redistribute it and/or modify 
+*  it under the terms of the GNU General Public License as published by 
+*  the Free Software Foundation, either version 3 of the License, or
+*  (at your option) any later version.
+*  
+*  This program is distributed in the hope that it will be useful, but 
+*  WITHOUT ANY WARRANTY; without even the implied warranty of 
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU 
+*  General Public License for more details.
+*  
+*  You should have received a copy of the GNU General Public License 
+*  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*  
+*  The interactive user interfaces in modified source and object code 
+*  versions of this program must display Appropriate Legal Notices, as 
+*  required under Section 5 of the GNU General Public License version 3.
+*  
+*  In accordance with Section 7(b) of the GNU General Public License 
+*  version 3, these Appropriate Legal Notices must retain the display of
+*   the "Cyberoam Elitecore Technologies Initiative" logo.
+*************************************************************************/
+
+@charset "utf-8";
+div.container {
+	margin-top: 5px;
+	margin-right: 0px;
+	margin-bottom: 5px;
+	margin-left: 2px;
+	position: relative;
+	width: 98.5%;
+	border: 1.5px solid #D0D5D8;
+	float: left;
+}
+div.Con_header {
+	position: relative;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #374953;
+	background: #EDF1F4 url(../images/table_header_img.jpg) repeat scroll 0 0;;
+	border-bottom-color: #D0D5D8;
+	text-align: left;
+	border-bottom-width: thin;
+	border-bottom-style: double;
+	height: 21px;
+	vertical-align: middle;
+	padding-left: 5px;
+	padding-top: 4px;
+}
+div.Con_graph {
+	font-size: 13px;
+	color: black;
+	text-align: left;
+	position: relative;
+}
+
+div.Con_table {
+	width: 100%;	
+	height: 10px; 	
+	overflow: hidden;
+	}
+
+div.Con_nevi {
+	width: 100%;
+	border-left: 1px solid #E2E2E2;
+	border-right: 1px solid #E2E2E2;
+	border-bottom: 1px solid #E2E2E2;
+	background: #F2F2F2 url(../images/navi_header_img.jpg) repeat scroll 0 0;
+	height:25px;
+}
+
+table.TableData {
+	width : 100%;
+	border: none;
+	background-color: #f7f7f7; 
+	}
+
+
+.tdhead{
+	font-size: 11px;
+	background: #E8EDF1 url(../images/navi_header_img.jpg) repeat scroll 0 0;
+	padding-left:4px;
+	padding-right:4px;
+	color: #313131;
+	font-weight: bold;
+	border-right: solid 1px #d8d8d8;
+	font-family:  Arial, Verdana,Helvetica, sans-serif;
+	white-space: nowrap;
+	height:25px;
+}
+.TableNevi {
+	width: 100%;
+	border-left: 1px solid #E2E2E2 ;
+	border-right: 1px solid #E2E2E2 ;
+	background: #F2F2F2 ;
+	visibility: hidden;
+	position: absolute;
+}
+ 
+.trdark:hover,.trdarkhilite{
+	background-color: #FFFED2;
+}
+
+.trlight:hover,.trlighthilite{
+	background-color: #FFFED2;
+}
+
+tbody tr.trdark{
+	background-color: #F9F9F9;
+}
+tbody tr.trlight{
+	
+	background-color: #FFFFFF;
+}
+
+td.tddata, td.tddatablue{
+	color: #313131;		
+	padding-left:4px;
+	padding-right:4px;
+	font-size: 12px;
+	border-bottom: solid 1px #F0F0F0;
+	border-left: solid 1px #F0F0F0;
+	border-right: solid 1px #F0F0F0;
+	overflow: hidden;
+	white-space: nowrap;
+	font-family:  Arial, Verdana,Helvetica, sans-serif;
+	height: 18px;
+}
+
+td.tddatablue{
+	color: #2388C7;
+}
+
+.mouseclick {
+	cursor: pointer;
+	font-family:  Arial, Verdana,Helvetica, sans-serif;
+	font-size: 11px;
+	color:#555555;
+	text-decoration: underline;
+}
+
+img.Graph_size{
+	height:300px;
+}
+
+
+.Close_button {
+	position: absolute;
+	height: 25px;
+	width: 25px;
+	cursor: pointer;
+	top: 5px;
+	right: 1px;
+}
+.hidden {
+	position: absolute;
+	visibility: hidden;
+	clear: left;
+	float: left;
+}
+.Min_button {
+	position: absolute;
+	height: 25px;
+	width: 25px;
+	cursor: pointer;
+	top: 5px;
+	right: 20px;
+}
+.navigationfont{
+	font-family:Arial,Verdana,Helvetica,sans-serif;
+	font-size: 11px;
+	font-weight:600;
+	color:#555555;
+}
+.navibutton{
+	font-family:  Arial, Verdana,Helvetica, sans-serif;
+	font-size: 0px;
+	color: #666;	
+	background: url("../images/go_pagination.jpg") no-repeat;
+	border:0px solid #BBB;		
+	height:18px;
+	width:27px;		
+}
+div.Combo_container {
+	position: relative;
+	float: left;
+	font-family:  Arial, Verdana,Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight:500;
+	color: #2a576a;
+	border: 1px solid #999999;
+	margin-left:5px;
+	margin-right:5px;
+	height: 15px;
+	*height: 16px;
+	z-index:1;
+}
+div.Combo_select {
+	position: relative;
+	float: left;
+	background-color: #FFFFFF;
+	overflow: hidden;
+	height: 15px;
+	padding-left:5px;
+	font-weight:bold;
+}
+div.Combo_button{
+	position:absolute;
+	width: 20px;
+	*width: 18px;
+	height: 15px;
+	background-image: url("../images/combo.jpg");
+	background-repeat: no-repeat;
+	background-position: right -3px;
+}
+.Combo_item_single{
+	height: 20px;
+	background-color: #FFFFFF;
+	width: 100%;
+	float: left;
+	overflow: hidden;
+	white-space: nowrap;
+	padding-left:6px;
+	font-weight:bold;
+}
+.Combo_item_single_hilite{
+	background-color: #EEEEEE;
+	height: 20px;
+	width: 100%;
+	float: left;
+	overflow: hidden;
+	white-space: nowrap;
+	padding-left:6px;
+	font-weight:bold;
+}
+.Combo_body {
+	text-align: left;
+	position: absolute;
+	border: 1px solid #999999;
+	top:16px;
+	left:0px;
+	overflow: hidden;
+	z-index:10;
+}
+.navitext{
+	font-family:  Arial, Verdana,Helvetica, sans-serif;
+	font-size: 11px;
+	color: #2a576a;
+	font-weight:bold;
+	border: 1px solid #999999;
+	margin-left:5px;
+	margin-right:5px;
+	height:18px;
+}
+.processdesc{
+	font-family:  Arial, Verdana,Helvetica, sans-serif;
+	font-size: 11px;
+	color: #666;
+}
+
+#bubble_tooltip{
+	width:300px;
+	position:absolute;
+	display:none;
+	z-index:100;
+}
+#bubble_tooltip .bubble_top{
+	background-image: url('../images/bubble_top.gif');
+	background-repeat:no-repeat;
+	height:16px;
+	z-index:100;	
+}
+#bubble_tooltip .bubble_middle{
+	background-image: url('../images/bubble_middle.gif');
+	background-repeat:repeat-y;	
+	background-position:0px 0px;
+	margin-top:-2px;
+	padding-left:4px;
+	padding-right:7px;
+	z-index:100;
+}
+#bubble_tooltip .bubble_middle span{
+	position:relative;
+	top:-8px;
+	font-family: Trebuchet MS, Lucida Sans Unicode, Arial, sans-serif;
+	font-size:11px;
+	z-index:100;
+}
+#bubble_tooltip .bubble_bottom{
+	background-image: url('../images/bubble_bottom.gif');
+	background-repeat:no-repeat;
+	background-repeat:no-repeat;	
+	height:32px;
+	position:relative;
+	top:-6px;
+	z-index:100;
+}
+#bubble_tooltip .bubble_bottom_arrow{
+	background-image: url('../images/bubble_bottom.gif');
+	background-repeat:no-repeat;
+	background-repeat:no-repeat;	
+	height:44px;
+	position:relative;
+	top:-6px;
+	z-index:100;
+}
+div.pdflink{
+	padding:5px 3px 0px 3px;
+	float: right;
+}
+img.pdflink{
+	border: 0px solid;
+	cursor: pointer;
+}
+div.xlslink{
+	padding:5px 3px 0px 3px;
+	float: right;
+}
+img.xlslink{
+	border: 0px solid;
+	cursor: pointer;
+}
+div.chartType{
+	padding:5px 3px 0px 3px;
+	float: right;
+}
+div.backup{
+	padding:5px 3px 0px 3px;
+	float: right;
+}
+div.restore{
+	padding:5px 3px 0px 3px;
+	float: right;
+}
+div.unloadAll{
+	padding:5px 3px 0px 3px;
+	float: right;
+}
+
+.pagefooter{
+	border:1px solid #D0D5D8;
+	height:auto;
+	width:100%;
+	left:0px;
+	bottom:0px;
+	position:relative;
+	float:left;
+	font-family:arial,tahoma,san-serif;
+	font-size:13px;
+	background-color:#FFFFFF;
+}
+.footerHead{
+	font-family:arial,tahoma,san-serif;
+	font-size:12px;
+	background-color:#FFFFFF;
+	color:#000000;
+}
+.footerBody{
+	font-family:arial,tahoma,san-serif;
+	font-size:11px;
+	background-color:#FFFFFF;
+	color:#000000;
+}
+

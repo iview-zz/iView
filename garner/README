@@ -1,0 +1,91 @@
+This is a release of Cyberoam iView, the Open Source logging and reporting solution that provides network visibility for security, regulatory compliance and data confidentiality. This is available under a dual-license as follows: 
+- For GPL (free) distributions, it is available under the GPLv3 License, see the COPYING file for the detailed license
+- For commercial distribution such as OEM, ISVs, rebranding please contact Elitecore Technologies Ltd by visiting the www.cyberoam-iview.com website
+
+For further information about Cyberoam iView or additional documentation, visit the www.cyberoam-iview.org website
+
+Cyberoam iView is free software, if you are using and/or enhancing / developing open source applications: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+ 
+A copy of the GNU General Public License is available along with this program; see the COPYING file for the detailed license. 
+The interactive user interfaces in modified source and object code versions of this program must display Appropriate Legal Notices, as required under  Section 5 of the GNU General Public License version 3.
+
+In accordance with Section 7(b) of the GNU General Public License version 3, these Appropriate Legal Notices must retain the display of the "Cyberoam Elitecore Technologies Initiative" logo. 
+ 
+Cyberoam iView ? is the trademark of Elitecore Technologies Ltd.
+
+****                    
+
+####################################################################################################################################
+Compilation Prerequisite:
+####################################################################################################################################
+
+	Postgres 8.4 
+	Perl 5.10 with utilities to embed perl in C/C++ applicaitons
+	For compilation under windows:
+		Cygwin 1.5.25 with following packages and its dependent packages
+			Category 
+				Database: libpq5,postgresql-devel
+				Devel: ELFIO,autoconf,automake,binutils,gcc,make 
+				Perl: colorgcc, perl, perl-Ext-Utils-Depends, perl-Ext-Utils-PkgConfig
+				 
+###################################################################################################################################
+Compilation steps for garner
+###################################################################################################################################
+
+Step 1: Export postgres header and library path. This path can be found from installed postgres path. 
+
+	For example 
+
+        export ENV_PG_INC_PATH=/usr/include/pgsql
+        export ENV_PG_LIB_PATH=/usr/lib/pgsql
+        [Note: If you are compiling garner for CCC then only 'ENV_CCC_BUILD' export is needed.]
+        export ENV_CCC_BUILD=1
+
+Step 2:
+
+	aclocal
+
+Step 3:
+
+	autoconf
+
+Step 4:
+	
+	autoheader
+
+Step 5:
+
+	automake
+
+Step 6:
+
+	./configure --prefix= --sysconfdir=/etc --no-create --no-recursion --enable-clockevent
+	[Note: If you are compiling under windows then please add " --enable-cygwin" with above ./configure command ]
+
+Step 7:
+	make clean;make 
+
+Step 8:	
+	
+	#Copy following libraries files to given destination 
+
+	cp ./src/garner /usr/local/garner/garner
+	#[Note:If you have compiled within windows then copy ./src/garner/garner.exe to /usr/local/garner/garner.exe]
+	cp ./plugins/InputPlugin/fwstub/libfwstub.so.1 /usr/local/garner/plugins/libfwstub.so
+	cp ./plugins/OutputPlugin/libarchiever/libarchiever.so.1 /usr/local/garner/plugins/libarchiever.so
+	cp ./plugins/OutputPlugin/libdevdiscovery/libdevdiscovery.so.1 /usr/local/garner/plugins/libdevdiscovery.so
+	cp ./plugins/OutputPlugin/libpgtrigger/liboppgtrigger.so.1 /usr/local/garner/plugins/liboppgtrigger.so
+	cp ./plugins/OutputPlugin/libpostgres/liboppostgres.so.1 /usr/local/garner/plugins/liboppostgres.so
+	cp ./plugins/OutputPlugin/libresolver/libresolver.so.1 /usr/local/garner/plugins/libresolver.so
+	cp ./plugins/OutputPlugin/libsethreshold/libsethreshold.so.1 /usr/local/garner/plugins/libsethreshold.so
+
+	mkdir /usr/local/garner/log
+	#	Copy all configuration files to /usr/local/garner/conf
+	-????
+	#cp ./conf/* /usr/local/garner/conf/
+
+
+
+

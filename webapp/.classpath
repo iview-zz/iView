@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/java"/>
+	<classpathentry kind="lib" path="lib/development/commons-el.jar"/>
+	<classpathentry kind="lib" path="lib/development/commons-logging-api-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/development/jasper-compiler-jdt.jar"/>
+	<classpathentry kind="lib" path="lib/development/jasper-compiler.jar"/>
+	<classpathentry kind="lib" path="lib/development/jasper-runtime.jar"/>
+	<classpathentry kind="lib" path="lib/development/jsp-api.jar"/>
+	<classpathentry kind="lib" path="lib/development/naming-factory-dbcp.jar"/>
+	<classpathentry kind="lib" path="lib/development/naming-factory.jar"/>
+	<classpathentry kind="lib" path="lib/development/naming-resources.jar"/>
+	<classpathentry kind="lib" path="lib/development/servlet-api.jar"/>
+	<classpathentry kind="lib" path="lib/production/activation.jar"/>
+	<classpathentry kind="lib" path="lib/production/commons-fileupload-1.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/production/commons-io-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/production/commons-net-3.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/production/iText-2.1.5.jar"/>
+	<classpathentry kind="lib" path="lib/production/jcommon-1.0.16.jar"/>
+	<classpathentry kind="lib" path="lib/production/jfreechart-1.0.13.jar"/>
+	<classpathentry kind="lib" path="lib/production/log4j-core.jar"/>
+	<classpathentry kind="lib" path="lib/production/lucene-core-3.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/production/mail.jar"/>
+	<classpathentry kind="lib" path="lib/production/mockrunner-jdk1.5-j2ee1.3-0.4.jar"/>
+	<classpathentry kind="lib" path="lib/production/poi-3.5-FINAL.jar"/>
+	<classpathentry kind="lib" path="lib/production/pop3.jar"/>
+	<classpathentry kind="lib" path="lib/production/postgresql.jar"/>
+	<classpathentry kind="lib" path="lib/production/webserver.jar"/>
+	<classpathentry kind="lib" path="lib/production/xml4j.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

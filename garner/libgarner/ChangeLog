@@ -1,0 +1,3 @@
+Wed Nov 28 23:03:40 IST 2007
+1. Added a timeout of 10 miliseconds in connect.
+2. Added read/write timeout of 50000 miliseconds during handshake.

@@ -1,0 +1,876 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Device</title>
+    <link rel="StyleSheet" href="css/System.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body class="" style="" onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="system.html#9000355">System</a> : <a class="WebWorks_Breadcrumb_Link" href="systemconfiguration.html#9000355">Configuration</a> : Device </div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="9000355">Device </a></div>
+      <div class="Body_Text"><a name="9000356"></a></div>
+      <div class="Body_Text"><a name="9000357">Cyberoam iView provides reports for multiple product categories. It helps the Super Admin to view consolidated reports and dashboards for same type of devices at one shot.</a></div>
+      <div class="Body_Text"><a name="9000358">Given below is the list of product categories along with the type of devices:</a></div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000359">UTM – Cyberoam, Fortinet, SonicWALL, Cisco ASA, Cisco PIX, Netfilter, Squid</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000360">Access Gateway – 24Online</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000361">EPS – eScan </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000362">Web Server – Apache </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="9000363">The administrator needs to mention the type of device while adding it to Cyberoam iView.</a></div>
+      <div class="Body_Text"><a name="9000364">To generate reports based on product category, one needs to select a product category from the drop down provided on the top of the navigation pane. </a></div>
+      <div class="Body_Text"><a name="9000365">Entire Cyberoam iView GUI changes according to the product category.</a></div>
+      <div class="Body_Text"><a name="9000366">This section describes how to add and configure devices that communicate with Cyberoam iView.</a></div>
+      <div class="Body_Text"><a name="9000367">&nbsp;</a></div>
+      <div class="Body_Text"><a name="9000368">Use </a><span style="font-weight: bold;">System</span> →  <span style="font-weight: bold;">Configuration</span> →  <span style="font-weight: bold;">Device </span>page to add and configure devices to communicate with Cyberoam iView.</div>
+      <div class="Body_Text"><a name="9000369">&nbsp;</a></div>
+      <div class="Body_Text" style="font-weight: bold;"><a name="9000370">Screen Components:</a></div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><span style="font-weight: bold;"><a name="9000371">Current Status</a></span>: Status of the device. Possible status of the device:</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 54pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">
+                <span style="font-family: &quot;Courier New&quot;;">o	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000372"><img class="Default" src="images/System.26.05.01.jpg" width="21" height="20" style="display: inline; left: 0pt; top: 0pt;" alt="" /> : Device is added and activated</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 54pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">
+                <span style="font-family: &quot;Courier New&quot;;">o	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000373"><img class="Default" src="images/System.26.05.02.jpg" width="20" height="22" style="display: inline; left: 0pt; top: 0pt;" alt="" />: Device is added but deactivated</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><span style="font-weight: bold;"><a name="9000374">Device Name</a></span>: Name of the device</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><span style="font-weight: bold;"><a name="9000375">IP Address</a></span>: IP address of the device</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><span style="font-weight: bold;"><a name="9000376">Device Type</a></span>: Type of the device. Possible device types:</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 54pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000377">Cyberoam</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 54pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000378">FortiGate</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 54pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000379">Squid</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 54pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000380">24Online</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 54pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000381">Linux Netfilter Firewall</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 54pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000382">Cisco ASA</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 54pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000383">Cisco ASA CSC SSM</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 54pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000384">Apache</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 54pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000385">eScan</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><span style="font-weight: bold;"><a name="9000386">Status</a></span>: Action that can be performed on the device: </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 54pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><span style="font-weight: bold;"><a name="9000387">Active</a></span>: Click ‘Active’ to start receiving logs from the device</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 54pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><span style="font-weight: bold;"><a name="9000388">Deactive</a></span>: Click ‘Deactive’ to reject device logs</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><span style="font-weight: bold;"><a name="9000389">Add</a></span> Button: Click to add a new device</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><span style="font-weight: bold;"><a name="9000390">Delete</a></span> Button: Click to delete a device</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><span style="font-weight: bold;"><a name="9000391">Save</a></span> Button: Click to save the information after changing the status</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="9000392">&nbsp;</a></div>
+      <div class="Body_Text"><a name="9000393">There are two ways to add device to the Cyberoam iView:</a></div>
+      <div class="bulleted_body_text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="bulleted_body_text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="bulleted_body_text_inner"><span class="Hyperlink" style="color: blue; font-family: Arial; font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; text-decoration: underline; text-transform: none; vertical-align: baseline;"><a href="javascript:WWHClickedPopup('Online_help', 'managedevice.html#9000397', '');" title="Device" name="9000394">Device Auto Discovery </a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="bulleted_body_text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="bulleted_body_text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="bulleted_body_text_inner"><span class="Hyperlink" style="color: blue; font-family: Arial; font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; text-decoration: underline; text-transform: none; vertical-align: baseline;"><a href="javascript:WWHClickedPopup('Online_help', 'managedevice.html#9000413', '');" title="Device" name="9000395">Manual Device Addition </a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Normal"><a name="9000396">&nbsp;</a></div>
+      <div class="Heading_5"><a name="9000397">Device Auto Discovery </a></div>
+      <div class="Normal"><a name="9000398">&nbsp;</a></div>
+      <div class="Body_Text"><a name="9000399">Cyberoam iView uses UDP protocol to discover the network device automatically. In order to send logs to Cyberoam iView, network device has to configure Cyberoam iView as a Syslog server.</a></div>
+      <div class="Body_Text"><a name="9000400">&nbsp;</a></div>
+      <div class="Body_Text"><a name="9000401">On successful login, Super Admin will be prompted with a popup "New Device Found" if a new device is discovered; else the Main Dashboard is displayed. This prompt will be displayed every time Super Admin logs in until she takes action on the newly discovered device.</a></div>
+      <div class="Body_Text"><a name="9000402">Super Admin can </a></div>
+      <div class="bulleted_body_text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="bulleted_body_text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="bulleted_body_text_inner"><a name="9000403">ignore this prompt by clicking <img class="Default" src="images/System.26.05.03.jpg" width="14" height="17" style="display: inline; left: 0pt; top: 0pt;" alt="" />  </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="bulleted_body_text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="bulleted_body_text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="bulleted_body_text_inner"><a name="9000404">accept and activate the device by providing Device Name and Device Type. Cyberoam iView will accept the logs only after device is activated.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="bulleted_body_text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="bulleted_body_text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="bulleted_body_text_inner"><a name="9000405">accept and keep device in deactivated state. Cyberoam iView will not accept the logs if device is in deactive state.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="9000406">&nbsp;</a></div>
+      <div class="Body_Text"><a name="9000407">Use the </a><span style="font-weight: bold;">System </span><span style="font-weight: bold;">→ </span><span style="font-weight: bold;"> Configuration </span><span style="font-weight: bold;">→ </span><span style="font-weight: bold;"> Device </span>page to<span style="font-weight: bold;"> </span></div>
+      <div class="bulleted_body_text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="bulleted_body_text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="bulleted_body_text_inner"><span class="Hyperlink" style="color: blue; font-family: Arial; font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; text-decoration: underline; text-transform: none; vertical-align: baseline;"><a href="javascript:WWHClickedPopup('Online_help', 'managedevice.html#9000413', '');" title="Device" name="9000408">Add Device</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="bulleted_body_text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="bulleted_body_text_inner" style="width: 18pt; white-space: nowrap;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="bulleted_body_text_inner"><span class="Hyperlink" style="color: blue; font-family: Arial; font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; text-decoration: underline; text-transform: none; vertical-align: baseline;"><a href="javascript:WWHClickedPopup('Online_help', 'managedevice.html#9000457', '');" title="Device" name="9000409">Delete Device</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="bulleted_body_text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="bulleted_body_text_inner" style="width: 18pt; white-space: nowrap;color: blue; text-decoration: underline;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="bulleted_body_text_inner" style="color: blue; text-decoration: underline;"><span class="Hyperlink" style="color: blue; font-family: Arial; font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; text-decoration: underline; text-transform: none; vertical-align: baseline;"><a href="javascript:WWHClickedPopup('Online_help', 'managedevice.html#9000434', '');" title="Device" name="9000410">Update Device</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="bulleted_body_text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="bulleted_body_text_inner" style="width: 18pt; white-space: nowrap;color: blue; text-decoration: underline;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="bulleted_body_text_inner" style="color: blue; text-decoration: underline;"><span class="Hyperlink" style="color: blue; font-family: Arial; font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; text-decoration: underline; text-transform: none; vertical-align: baseline;"><a href="javascript:WWHClickedPopup('Online_help', 'managedevice.html#9000426', '');" title="Device" name="9000411">Activate Device</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="bulleted_body_text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="bulleted_body_text_inner" style="width: 18pt; white-space: nowrap;color: blue; text-decoration: underline;">•	</div>
+            </td>
+            <td width="100%">
+              <div class="bulleted_body_text_inner" style="color: blue; text-decoration: underline;"><span class="Hyperlink" style="color: blue; font-family: Arial; font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; text-decoration: underline; text-transform: none; vertical-align: baseline;"><a href="javascript:WWHClickedPopup('Online_help', 'managedevice.html#9000446', '');" title="Device" name="9000412">Deactivate Device</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_5"><a name="9000413">Add Device</a></div>
+      <div class="Normal"><a name="9000414">&nbsp;</a></div>
+      <table class="Table_Normal" style="width: 442.8pt;" cellspacing="0" summary="">
+        <tr>
+          <td style="width: 26.4pt;">
+            <div class="Normal"><a name="9000415"><img class="Default" src="images/System.26.05.04.jpg" width="26" height="26" style="display: inline; left: 0pt; top: 0pt;" alt="" /></a></div>
+          </td>
+          <td style="width: 416.4pt;">
+            <div class="Normal_outer" style="margin-left: 0pt;">
+              <table border="0" cellspacing="0" cellpadding="0" summary="">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Normal_inner" style="width: 18pt; white-space: nowrap;text-align: justify;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="Normal_inner" style="text-align: justify;"><span class="Style_Arial_10_pt_Bold_Dark_Blue" style="color: navy; font-family: Arial; font-size: 10pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline;"><a name="9000416">Super Admin privilege required to add a new device.</a></span></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="Normal"><a name="9000418">&nbsp;</a></div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">1.	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000419">Go to </a><span style="font-weight: bold;">System </span><span style="font-weight: bold;">→</span><span style="font-weight: bold;"> Configuration </span><span style="font-weight: bold;">→ </span><span style="font-weight: bold;"> Device </span>and<span style="font-weight: bold;"> </span>click <span style="font-weight: bold;">Add.</span> </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">2.	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000420">Specify device ID and device name. Device ID and device name can be any combination of alphanumeric characters and special characters “_”, “@” and “.”</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">3.	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000421">Specify IP address of the device.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">4.	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000422">Select device type from the drop down. Possible device types are Cyberoam, FortiGate, Squid, 24Online, SonicWALL, Linux Netfilter Firewall, Cisco ASA, Cisco ASA  CSC SS</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">5.	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000423">Specify device description, if required.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">6.	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000424">Select status of the device from drop down, default status of a device is ‘Deactive’. To receive logs from the device one needs to </a><span class="Hyperlink" style="color: blue; font-family: Arial; font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; text-decoration: underline; text-transform: none; vertical-align: baseline;"><a href="javascript:WWHClickedPopup('Online_help', 'managedevice.html#9000426', '');" title="Device">activate</a></span> the device in Cyberoam iView.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">7.	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000425">Click </a><span style="font-weight: bold;">Add </span>to add the device to Cyberoam iView.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_5"><a name="9000426">Activate Device</a></div>
+      <div class="Normal"><a name="9000427">&nbsp;</a></div>
+      <table class="Table_Normal" style="width: 442.8pt;" cellspacing="0" summary="">
+        <tr>
+          <td style="width: 25.8pt;">
+            <div class="Normal"><a name="9000428"><img class="Default" src="images/System.26.05.05.jpg" width="26" height="26" style="display: inline; left: 0pt; top: 0pt;" alt="" /></a></div>
+          </td>
+          <td style="width: 417pt;">
+            <div class="Normal_outer" style="margin-left: 0pt;">
+              <table border="0" cellspacing="0" cellpadding="0" summary="">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Normal_inner" style="width: 18pt; white-space: nowrap;text-align: justify;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="Normal_inner" style="text-align: justify;"><span class="Style_Arial_10_pt_Bold_Dark_Blue" style="color: navy; font-family: Arial; font-size: 10pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline;"><a name="9000429">Super Admin privilege required to activate a device.</a></span></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="Normal"><a name="9000431">&nbsp;</a></div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">1.	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000432">Go to  </a><span style="font-weight: bold;">System </span><span style="font-weight: bold;">→ </span><span style="font-weight: bold;"> Configuration </span><span style="font-weight: bold;">→ </span><span style="font-weight: bold;"> Device </span>and click ‘ ‘<span style="font-weight: bold;">Active</span>’ against device name.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">2.	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000433">You can also activate the device from </a><span class="Hyperlink" style="color: blue; font-family: Arial; font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; text-decoration: underline; text-transform: none; vertical-align: baseline;"><a href="javascript:WWHClickedPopup('Online_help', 'managedevice.html#9000434', '');" title="Device">Update Device</a></span> section. After activation, Cyberoam iView will start receiving logs from the device.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_5"><a name="9000434">Update Device</a></div>
+      <div class="Normal"><a name="9000435">&nbsp;</a></div>
+      <table class="Table_Normal" style="width: 442.8pt;" cellspacing="0" summary="">
+        <tr>
+          <td style="width: 25.8pt;">
+            <div class="Normal"><a name="9000436"><img class="Default" src="images/System.26.05.06.jpg" width="26" height="26" style="display: inline; left: 0pt; top: 0pt;" alt="" /></a></div>
+          </td>
+          <td style="width: 417pt;">
+            <div class="Normal_outer" style="margin-left: 0pt;">
+              <table border="0" cellspacing="0" cellpadding="0" summary="">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Normal_inner" style="width: 18pt; white-space: nowrap;text-align: justify;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="Normal_inner" style="text-align: justify;"><span class="Style_Arial_10_pt_Bold_Dark_Blue" style="color: navy; font-family: Arial; font-size: 10pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline;"><a name="9000437">Super Admin privilege required to update a device.</a></span></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="Normal"><a name="9000439">&nbsp;</a></div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">1.	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000440">Go to  </a><span style="font-weight: bold;">System </span><span style="font-weight: bold;">→</span><span style="font-weight: bold;"> Configuration </span><span style="font-weight: bold;">→ </span><span style="font-weight: bold;"> Device Management </span>and click device to be updated.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">2.	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000441">Refer </a><span class="Hyperlink" style="color: blue; font-family: Arial; font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; text-decoration: underline; text-transform: none; vertical-align: baseline;"><a href="javascript:WWHClickedPopup('Online_help', 'managedevice.html#9000413', '');" title="Device">Add Device</a></span> for information on each parameter.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="9000442">&nbsp;</a></div>
+      <table class="Table_Normal" style="width: 446.4pt;" cellspacing="0" summary="">
+        <tr>
+          <td style="width: 27pt;">
+            <div class="Normal" style="font-weight: bold; text-align: justify;"><a name="9000443"><img class="Default" src="images/System.26.05.07.jpg" width="22" height="22" style="display: inline; left: 0pt; top: 0pt;" alt="" /></a></div>
+          </td>
+          <td style="width: 419.4pt;">
+            <div class="Normal_outer" style="margin-left: 0pt;">
+              <table border="0" cellspacing="0" cellpadding="0" summary="">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Normal_inner" style="width: 18pt; white-space: nowrap;text-align: justify;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="Normal_inner" style="text-align: justify;"><span class="Style_Arial_10_pt_Bold_Dark_Blue" style="color: navy; font-family: Arial; font-size: 10pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline;"><a name="9000444">All the fields except Device ID and Device Type are editable.</a></span></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading_5"><a name="9000446">Deactivate Device</a></div>
+      <div class="Normal"><a name="9000447">&nbsp;</a></div>
+      <table class="Table_Normal" style="width: 442.8pt;" cellspacing="0" summary="">
+        <tr>
+          <td style="width: 26.4pt;">
+            <div class="Normal"><a name="9000448"><img class="Default" src="images/System.26.05.08.jpg" width="26" height="26" style="display: inline; left: 0pt; top: 0pt;" alt="" /></a></div>
+          </td>
+          <td style="width: 416.4pt;">
+            <div class="Normal_outer" style="margin-left: 0pt;">
+              <table border="0" cellspacing="0" cellpadding="0" summary="">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Normal_inner" style="width: 18pt; white-space: nowrap;text-align: justify;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="Normal_inner" style="text-align: justify;"><span class="Style_Arial_10_pt_Bold_Dark_Blue" style="color: navy; font-family: Arial; font-size: 10pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline;"><a name="9000449">Super Admin privilege required to deactivate a device.</a></span></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="Normal"><a name="9000451">&nbsp;</a></div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">1.	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000452">Go to  </a><span style="font-weight: bold;">System </span><span style="font-weight: bold;">→</span><span style="font-weight: bold;"> Configuration </span><span style="font-weight: bold;">→ </span><span style="font-weight: bold;"> Device </span>and click ‘ ‘Deactivate’ option against device name. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">2.	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000453">You can also deactivate the device from </a><span class="Hyperlink" style="color: blue; font-family: Arial; font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; text-decoration: underline; text-transform: none; vertical-align: baseline;"><a href="javascript:WWHClickedPopup('Online_help', 'managedevice.html#9000434', '');" title="Device">Update Device</a></span> section. After deactivation, Cyberoam iView will stop receiving logs from the device.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table class="Table_Normal" style="width: 442.8pt;" cellspacing="0" summary="">
+        <tr>
+          <td style="width: 27pt;">
+            <div class="Normal" style="text-align: justify;"><a name="9000454"><img class="Default" src="images/System.26.05.09.jpg" width="22" height="22" style="display: inline; left: 0pt; top: 0pt;" alt="" /></a></div>
+          </td>
+          <td style="width: 415.8pt;">
+            <div class="Normal_outer" style="margin-left: 0pt;">
+              <table border="0" cellspacing="0" cellpadding="0" summary="">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Normal_inner" style="width: 18pt; white-space: nowrap;color: navy; font-family: Arial; font-size: 10pt; font-weight: bold; text-align: justify;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="Normal_inner" style="color: navy; font-family: Arial; font-size: 10pt; font-weight: bold; text-align: justify;"><a name="9000455">To access the data of device for forensic investigations do not delete the device from Cyberoam iView, just deactivate it.</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading_5"><a name="9000457">Delete Device</a></div>
+      <div class="Normal"><a name="9000458">&nbsp;</a></div>
+      <table class="Table_Normal" style="width: 442.8pt;" cellspacing="0" summary="">
+        <tr>
+          <td style="width: 26.4pt;">
+            <div class="Normal"><a name="9000459"><img class="Default" src="images/System.26.05.10.jpg" width="26" height="26" style="display: inline; left: 0pt; top: 0pt;" alt="" /></a></div>
+          </td>
+          <td style="width: 416.4pt;">
+            <div class="Normal_outer" style="margin-left: 0pt;">
+              <table border="0" cellspacing="0" cellpadding="0" summary="">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Normal_inner" style="width: 18pt; white-space: nowrap;text-align: justify;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="Normal_inner" style="text-align: justify;"><span class="Style_Arial_10_pt_Bold_Dark_Blue" style="color: navy; font-family: Arial; font-size: 10pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline;"><a name="9000460">Super Admin privilege required to delete a device.</a></span></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="Normal_outer" style="margin-left: 0pt;">
+              <table border="0" cellspacing="0" cellpadding="0" summary="">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Normal_inner" style="width: 18pt; white-space: nowrap;font-family: Arial; font-size: 10pt; text-align: justify;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="Normal_inner" style="font-family: Arial; font-size: 10pt; text-align: justify;"><span class="Style_Arial_10_pt_Bold_Dark_Blue" style="color: navy; font-family: Arial; font-size: 10pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline;"><a name="9000461">Device should not be a member of any device group</a></span>.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="Normal"><a name="9000463">&nbsp;</a></div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">1.	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000464">Go to </a><span style="font-weight: bold;">System </span><span style="font-weight: bold;">→ </span><span style="font-weight: bold;">Configuration </span><span style="font-weight: bold;">→ </span><span style="font-weight: bold;"> Device. </span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">2.	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000465">Click checkbox against the device(s) to be deleted OR click </a><span style="font-weight: bold;">Select All</span> to delete all devices. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text_outer" style="margin-left: 18pt;">
+        <table border="0" cellspacing="0" cellpadding="0" summary="">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Body_Text_inner" style="width: 18pt; white-space: nowrap;">3.	</div>
+            </td>
+            <td width="100%">
+              <div class="Body_Text_inner"><a name="9000466">Click </a><span style="font-weight: bold;">Delete.</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="right" summary="">
+      <tr>
+        <td class="WebWorks_Company_Name_Bottom">Elitecore Technologies Private Ltd.</td>
+      </tr>
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">Onlinehelp version - 1.0-0.1.1.4-21/10/2011</td>
+      </tr>
+      <tr>
+        <td class="WebWorks_Company_Fax_Bottom">Copyright 2011 Elitecore Technologies Ltd.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

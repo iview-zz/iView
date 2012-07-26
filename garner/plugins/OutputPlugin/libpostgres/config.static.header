@@ -1,0 +1,10 @@
+#include <string.h>
+#include <stdlib.h>
+
+#include "../../../src/std_event.h"
+#include "postgres_db.h"
+#include "utils.h"
+
+static struct _std_event_vars_pg
+	std_event_vars_pg[] = {
+

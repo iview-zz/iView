@@ -1,0 +1,193 @@
+/* ***********************************************************************
+*  Cyberoam iView - The Intelligent logging and reporting solution that 
+*  provides network visibility for security, regulatory compliance and 
+*  data confidentiality 
+*  Copyright  (C ) 2009  Elitecore Technologies Ltd.
+*  
+*  This program is free software: you can redistribute it and/or modify 
+*  it under the terms of the GNU General Public License as published by 
+*  the Free Software Foundation, either version 3 of the License, or
+*  (at your option) any later version.
+*  
+*  This program is distributed in the hope that it will be useful, but 
+*  WITHOUT ANY WARRANTY; without even the implied warranty of 
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU 
+*  General Public License for more details.
+*  
+*  You should have received a copy of the GNU General Public License 
+*  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*  
+*  The interactive user interfaces in modified source and object code 
+*  versions of this program must display Appropriate Legal Notices, as 
+*  required under Section 5 of the GNU General Public License version 3.
+*  
+*  In accordance with Section 7(b) of the GNU General Public License 
+*  version 3, these Appropriate Legal Notices must retain the display of
+*   the "Cyberoam Elitecore Technologies Initiative" logo.
+*************************************************************************/
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	background-color: #97AEBE;
+	margin: 0px;
+	text-align:center;
+}
+table {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+}
+
+#wrapper{
+	width:630px;
+	margin:0 auto;
+	top:100px;
+	position:relative;
+}
+
+.loginbkgd {
+	background-image: url(../images/loginbkgd.jpg);
+	background-repeat: no-repeat;
+	position:relative;
+	width:630px;
+	height:388px;
+
+}
+.iviewlogo {
+	position:relative;
+	height: 38px;
+	width: 130px;
+	top: 25px;
+	left: 85px;
+}
+
+.tagline{
+	font-family: Arial;
+	font-size: 11px;
+	color: #666666;
+	position: relative;
+	width: 300px;
+	*right:160px;
+	top:35px;
+}
+
+
+.screens {
+	position:relative;
+	height: 110px;
+	width: 180px;
+	top: 65px;
+	left: 60px;
+}
+
+
+.cyberdetails{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #666666;
+	position: relative;
+	top:85px;
+}
+
+
+
+#loginform{
+	top: 30px;
+	left: 380px;
+	position:absolute;
+}
+
+.signin{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: #1D4F6D;
+}
+
+.inputbox{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #3B5663;
+	font-weight:bolder;
+	width:200px;
+	border:1px solid #CCCCCC;
+}
+
+
+.footer {
+	position:absolute;
+	bottom:0px;
+	align:center;
+	left:0px;
+	margin:0 auto;
+	padding:5px;
+	/*
+	margin-left:20px;
+	margin-right:20px;*/
+}
+.footer a{
+	color:#07467C;
+	text-decoration:none;
+}
+.footer a:hover{
+	color:#07467C;
+	text-decoration:none;
+}
+.footer a:visited{
+	color:#07467C;
+	text-decoration:none;
+}
+.footer a:active{
+	text-decoration:none;
+}
+
+.cyberlogo {
+	background-image: url(../images/cyberoamlogo.jpg);
+	background-repeat: no-repeat;
+	height: 23px;
+	width: 64px;
+	bottom:0px;
+	float:left;
+	padding-right:10px;
+}
+.errormsg{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #DA251D;
+	position: absolute;
+	top:65px;
+	left: 385px;
+}
+.separator {
+	bottom: 0px; 
+	height:20px;
+	border-left: 1px solid #666666;
+	bottom:0px;
+	float:left;
+	padding-right:10px;
+}
+
+.elitelogo{
+	background-image: url(../images/elitecore.jpg);
+	background-repeat: no-repeat;
+	height:20px;
+	width:20px;
+	bottom:0px;
+	float:left;
+	padding-right:10px;
+}
+
+.copyright{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+	bottom:-5px;
+	float:left;
+	position:relative;
+}
+
+
+a{text-decoration:none; color:#666666}
+a:hover{text-decoration:underline; color:#666666}

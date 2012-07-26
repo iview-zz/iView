@@ -1,0 +1,569 @@
+  { 0, 0, 0, 0, 0} /* the last null-terminated node */
+
+}; /* end of structure */
+
+struct _se_vars_fws*
+config_get_se_var_fws_by_name(const char *name)
+{
+    int i;
+    for(i=0; g_se_vars_fws[i].variable; i++) {
+	if(strcmp(g_se_vars_fws[i].variable, name) == 0) {
+	    return &g_se_vars_fws[i];
+	}
+    }
+    return NULL;
+}
+
+
+int
+test_function(struct _std_event *se,char *key)
+{
+    printf("%s: I AM CALLED for '%s'\n", __FUNCTION__, key);
+    return 0;
+}
+
+CONV_FN
+config_get_func(char *fn_name)
+{
+    if(!strcasecmp("g_date", fn_name)){
+        return get_date;
+    }else if(!strcasecmp("g_time", fn_name)){
+        return get_time;
+    }else if(!strcasecmp("p_normalize", fn_name)){
+        return proto_normalize;
+    }else if(!strcasecmp("ignore", fn_name)){
+        return ignore_con;
+    }else if(!strcasecmp("r_log_component", fn_name)){
+        return r_log_component;
+    }else if(!strcasecmp("r_log_subtype", fn_name)){
+        return r_log_subtype;
+    }else if(!strcasecmp("r_priority", fn_name)){
+        return r_priority;
+    }else if(!strcasecmp("r_fw_dir", fn_name)){
+        return r_fw_dir;
+    }else if(!strcasecmp("r_ftp_dir", fn_name)){
+        return r_ftp_dir;
+    }else if(!strcasecmp("r_log_type", fn_name)){
+        return r_log_type;
+    }else if(!strcasecmp("get_domain", fn_name)){
+        return get_domain;
+    }else if(!strcasecmp("sonic_get_ip", fn_name)){
+        return sonic_get_ip;
+    }else if(!strcasecmp("sonic_get_port", fn_name)){
+        return sonic_get_port;
+    }else if(!strcasecmp("sonic_get_zone", fn_name)){
+        return sonic_get_zone;
+    }else if(!strcasecmp("sonic_get_proto", fn_name)){
+        return sonic_get_proto;
+    }else if(!strcasecmp("get_sev", fn_name)){
+        return get_sev;
+    }else if(!strcasecmp("get_forti_mid", fn_name)){
+        return  get_forti_mid;
+    }else if(!strcasecmp("get_sonic_mid", fn_name)){
+        return  get_sonic_mid;
+    }else if(!strcasecmp("get_other_mid", fn_name)){
+        return  get_other_mid;
+    }else if(!strcasecmp("get_time", fn_name)){
+        return  get_time;
+    }else if(!strcasecmp("get_date", fn_name)){
+        return  get_date;
+    }else if(!strcasecmp("r_sslvpn_resource_type", fn_name)){
+        return  r_sslvpn_resource_type;
+    }else if(!strcasecmp("r_sslvpn_mode", fn_name)){
+        return  r_sslvpn_mode;
+    }else if(!strcasecmp("r_im_action", fn_name)){
+        return  r_im_action;
+    }else if(!strcasecmp("r_im_protocol", fn_name)){
+        return  r_im_protocol;
+    }else if(!strcasecmp("r_im_receiver", fn_name)){
+        return  r_im_receiver;
+    }else if(!strcasecmp("r_status", fn_name)){
+        return  r_status;
+    }else if(!strcasecmp("r_messageid", fn_name)){
+        return  r_messageid;
+    }else{
+    return test_function;
+    }
+}
+
+
+struct _ip_fwtype_map  *g_ip_fwtype_map_hash = NULL;
+
+struct _ip_fwtype_map *
+config_alloc_ip_fwtype_map(void)
+{
+    struct _ip_fwtype_map *ip_fw_map = NULL;
+
+    ip_fw_map = (struct _ip_fwtype_map *) calloc(1, sizeof(struct _ip_fwtype_map));
+    if(!ip_fw_map) {
+        return NULL;
+    }
+    printf("%s: ip-fwtype relation object allocated\n", __FUNCTION__);
+    return ip_fw_map;
+}
+
+int
+config_hash_ip_fwtype_map(struct _ip_fwtype_map *ip_fw_map)
+{
+    if(!ip_fw_map) {
+        printf("%s: ip-fwtype map object reference is NULL\n", __FUNCTION__);
+        return -1;
+    }
+
+    HASH_ADD(hh, g_ip_fwtype_map_hash, ip[0], strlen(ip_fw_map->ip), ip_fw_map);
+
+    printf("%s: ip-fwtype relation added to ip-fwtype map hash\n", __FUNCTION__);
+    return 0;
+}
+
+int
+update_ip_fwtype_map(char *newip, struct _ip_fwtype_map *ip_fw_map)
+{
+	struct _ip_fwtype_map *new_ip_fw_map=NULL;
+
+	if (!newip || !ip_fw_map) {
+		return 0;
+	}
+
+	new_ip_fw_map = config_alloc_ip_fwtype_map();
+
+	strncpy(new_ip_fw_map->ip, newip, sizeof(new_ip_fw_map->ip)-1);
+	new_ip_fw_map->fw_name = ip_fw_map->fw_name;
+	new_ip_fw_map->fw_appid = ip_fw_map->fw_appid;
+	new_ip_fw_map->fw = ip_fw_map->fw;
+
+	HASH_DEL(g_ip_fwtype_map_hash, ip_fw_map);
+	free(ip_fw_map);
+	config_hash_ip_fwtype_map(new_ip_fw_map);
+
+	return 1;
+}
+
+struct _ip_fwtype_map *
+is_this_reg_appliance(const char *appid)
+{
+	struct _ip_fwtype_map *table;
+	if (!appid) {
+		return NULL;
+	}
+
+	for (table = g_ip_fwtype_map_hash; table != NULL; table = table->hh.next) {
+		if (strcmp(appid, table->fw_appid) == 0) {
+			return table;
+		}
+	}
+
+	return NULL;
+}
+
+
+static struct _firewall_info *g_fw_list = NULL;
+
+struct _firewall_info *
+config_alloc_firewall_info(void)
+{
+    struct _firewall_info *fw = NULL;
+
+    fw = (struct _firewall_info *) calloc(1, sizeof(struct _firewall_info));
+    if(!fw) {
+	return NULL;
+    }
+    printf("%s: firewall info allocated\n", __FUNCTION__);
+    return fw; 
+}
+
+
+struct _firewall_info *
+get_firewall_info_by_name(char *fw_name){
+	struct _firewall_info *fw = NULL;
+	if(g_fw_list){
+		for(fw=g_fw_list; fw->next;fw=fw->next){
+			if( strcmp(fw->fw_name,fw_name)==0){
+				break;
+			}
+		} 
+	}
+	return fw;
+}
+
+int
+config_insert_firewall(struct _firewall_info *fw)
+{
+    if(!fw) {
+	printf("%s: firewall info reference is NULL\n", __FUNCTION__);
+	return -1;
+    }
+
+    fw->next = NULL;	
+
+    if(!g_fw_list) {
+	/* first node in the list */
+	g_fw_list = fw;
+    } else {
+	/* insert at the tail */
+	struct _firewall_info *tmp = NULL;
+	for(tmp = g_fw_list; tmp->next; tmp=tmp->next);	
+	tmp->next = fw;
+    }
+    printf("%s: firewall info inserted\n", __FUNCTION__);
+    return 0;
+}
+
+struct _kv_rel *
+config_alloc_kv_rel(void)
+{
+    struct _kv_rel *kv_rel = NULL;
+
+    kv_rel = (struct _kv_rel *) calloc(1, sizeof(struct _kv_rel));
+    if(!kv_rel) {
+        return NULL;
+    }
+
+    kv_rel->fn_max = KV_REL_FUNCTION_BLOCKSIZE;
+    kv_rel->conversion_fn = (CONV_FN *) calloc(kv_rel->fn_max, sizeof(CONV_FN));
+    if(!kv_rel->conversion_fn) {
+        printf("%s, conversion function pointer array allocation failed\n", __FUNCTION__);
+        free(kv_rel);
+        return NULL;
+    }
+
+    printf("%s: keyvalue relation allocated\n", __FUNCTION__);
+    return kv_rel;
+}
+
+int
+config_realloc_conversion_fn(struct _kv_rel *kv_rel)
+{
+    if(!kv_rel) {
+        printf("%s: keyvalue reference is NULL\n", __FUNCTION__);
+        return -1;
+    }
+
+    kv_rel->fn_max += KV_REL_FUNCTION_BLOCKSIZE;
+    kv_rel->conversion_fn = (CONV_FN *) realloc(kv_rel->conversion_fn, kv_rel->fn_max);
+    if(!kv_rel->conversion_fn) {
+        printf("%s: conversion function pointer array reallocation failed\n", __FUNCTION__);
+        kv_rel->fn_max = 0;
+        kv_rel->fn_index = 0;
+        return -1;
+    }
+    printf("%s: conversion function array reallocated\n", __FUNCTION__);
+    return 0;
+}
+
+struct _kv_info *
+config_alloc_kv_info(void)
+{
+    struct _kv_info *kv = NULL;
+
+    kv = (struct _kv_info *) calloc(1, sizeof(struct _kv_info));
+    if(!kv) {
+        return NULL;
+    }
+    printf("%s: keyvalue allocated\n", __FUNCTION__);
+
+    return kv;
+}
+
+int
+config_hash_kv_rel_to_kv(struct _kv_info *kv, struct _kv_rel *kv_rel)
+{
+    struct _kv_rel *tmp_kv=NULL;
+    if(!kv) {
+        printf("%s: keyvalue info reference is NULL\n", __FUNCTION__);
+        return -1;
+    }
+    if(!kv_rel) {
+        printf("%s: keyvalue relation reference is NULL\n", __FUNCTION__);
+        return -1;
+    }
+    kv_rel->next=NULL;
+    HASH_FIND(hh, kv->kv_rel_hash, kv_rel->key, strlen(kv_rel->key),tmp_kv);
+    if(tmp_kv==NULL){	 
+	HASH_ADD(hh, kv->kv_rel_hash, key[0], strlen(kv_rel->key), kv_rel);
+    }else{
+	while (tmp_kv->next!=NULL){
+                tmp_kv=tmp_kv->next;
+        }
+        tmp_kv->next=kv_rel;
+    }
+
+    //HASH_ADD_STR(kv->kv_rel_hash, key, kv_rel);
+
+    printf("%s: keyvalue relation added to keyvalue hash\n", __FUNCTION__);
+    return 0;
+}
+
+struct _log_info *
+config_alloc_log_info(void)
+{
+    struct _log_info *log = NULL;
+
+    log = (struct _log_info *) calloc(1, sizeof(struct _log_info));
+	log->kv_rel_hash=NULL;
+    if(!log) {
+        return NULL;
+    }
+    printf("%s: log info allocated\n", __FUNCTION__);
+    return log;
+}
+
+int
+config_hash_log_info(struct _firewall_info *fw, struct _log_info *log)
+{
+    if(!fw) {
+	printf("%s: firewall info reference is NULL\n", __FUNCTION__);
+        return -1;
+    }
+    if(!log) {
+	printf("%s: log info reference is NULL\n", __FUNCTION__);
+        return -1;
+    }
+
+    HASH_ADD(hh, fw->un.log_hash, log_id[0], strlen(log->log_id), log);
+    
+    printf("%s: log info added to firewall hash\n", __FUNCTION__);
+    return 0;
+}
+
+int
+config_hash_kv_rel_to_log(struct _log_info *log, struct _kv_rel *kv_rel)
+{
+    struct _kv_rel *tmp_kv=NULL;
+    if(!log) {
+        printf("%s: log info reference is NULL\n", __FUNCTION__);
+        return -1;
+    }
+    if(!kv_rel) {
+        printf("%s: keyvalue relation reference is NULL\n", __FUNCTION__);
+        return -1;
+    }
+
+    //HASH_ADD_STR(log->kv_rel_hash, key, kv_rel);
+    kv_rel->next=NULL;
+    HASH_FIND(hh, log->kv_rel_hash, kv_rel->key, strlen(kv_rel->key),tmp_kv);
+    if(tmp_kv==NULL){ 
+	HASH_ADD(hh, log->kv_rel_hash, key[0], strlen(kv_rel->key), kv_rel);
+    }else{
+	while (tmp_kv->next!=NULL){
+		tmp_kv=tmp_kv->next;
+	}
+        tmp_kv->next=kv_rel;
+    }
+
+
+    printf("%s: keyvalue relation added to log info hash\n", __FUNCTION__);
+    return 0;
+}
+
+
+
+
+
+/* Functions to parse message id file */
+struct _msgid_hash *other_msgid_hash=NULL;
+struct _msgid_hash *sonicwall_msgid_hash=NULL;
+struct _msgid_hash *fortigate_msgid_hash=NULL;
+
+static int
+get_pair(int *trim, char *str, char delim, char esc, char bound){
+    int pos=0,i=0;
+    /***  Trim characters   ***/
+    while((str[i]==' ' || str[i]==delim) && str[i]!='\0') i++;
+    /***  Set trim count  ***/
+    *trim = i;
+    if(str[i]=='\0')
+        return 0;
+    pos = i;
+    while(str[pos]!=delim && str[pos]!='\0') {
+        if(str[pos]==bound){
+            pos++;
+            while(str[pos]!='\0' && str[pos]!=bound) pos++;
+        }
+        if(str[pos]==esc)
+            pos ++;
+        pos++;
+    }
+    if(str[pos] == delim) {
+        str[pos++] = '\0';
+    }
+    return pos;
+
+}
+
+
+static int
+get_key(int *trim, char *str, char delim, char esc){
+    int pos=0,i=0;
+    /***  Trim spaces   ***/
+    while(str[i]!='\0' && str[i]==' ') i++;
+    /***  Set trim count  ***/
+    *trim = i;
+    if(str[i]=='\0' || str[i]==delim)
+        return 0;
+    pos = i;
+    while(str[pos]!=delim && str[pos]!='\0') {
+        if(str[pos]==esc)
+            pos ++;
+        pos++;
+    }
+    if(str[pos] == delim) {
+        str[pos++] = '\0';
+    }
+    return pos;
+}
+
+
+
+static int
+get_value(int *trim, char *str, char delim, char esc, char bound){
+    int i=0, len=strlen(str);
+    *trim = 0;
+    if(bound!='\0' && str[i]!=bound)
+        bound = '\0';
+    else if(bound!='\0' && str[i]==bound){
+        i++;
+        len--;
+        (*trim)++;
+    }
+    while(str[i]!='\0' && str[i]!=bound){
+        if(str[i]==esc) i++;
+            i++;
+        }
+    if(i!=len)
+        return 0;
+    else
+        str[len] = '\0';
+    return i;
+}
+
+
+
+
+static int
+parse_line(char *response){
+    int len = strlen(response);
+	int i=0;
+	int j=0, k, l;
+	int errflag=0;
+    char *key;
+	char fwname[64];
+	struct _kv_rel *kvp=NULL,*tmpkvp=NULL;
+       // printf("Buffer =%s=\n",response);
+	struct  _msgid_hash *obj_msgid= (struct  _msgid_hash *) calloc(1,sizeof(struct  _msgid_hash));
+
+
+    while(i<len) {
+        j = get_pair(&k, response,' ', '\\', '\"');
+        if(j==0) break;
+        i += j;
+        response += k;
+        j -= k;
+        //printf("Pair : %s\n",response);
+        l = get_key(&k, response,'=' ,'\\');
+        if(l==0){
+            printf("crstub: Invalid Key found\n");
+            response += j;
+			errflag=1;
+            continue;
+        } else {
+            key = strdup(response);
+            response += l;
+            j -= l;
+            l = get_value(&k, response,'=', '\\', '\"');
+            response += k;
+            if(l==0 && response[0]!='\0'){
+                printf("crstub: Invalid Value found for %s:%s\n",key,response);
+				errflag=1;
+            }else{
+				 printf("Key : -%s- Value : -%s-\n",key,response);
+                 if(!strcmp(key,"firewall")){
+                    strcpy(fwname,response);
+                    printf("Fwname set to %s\n",response);
+                 }else if(!strcmp(key,"logid")){
+                    strcpy(obj_msgid->msgid,response);
+                    printf("msgid set to %s\n",response);
+                 }else{
+					tmpkvp= (struct _kv_rel *) calloc(1, sizeof(struct _kv_rel));
+                    tmpkvp->key=strdup(response);
+                    tmpkvp->se_var=config_get_se_var_fws_by_name(key);
+                    tmpkvp->next=NULL;
+					printf("kv_rel  set to for %s and %s\n",response,key);
+					if (obj_msgid->kv_list == NULL) {
+						obj_msgid->kv_list = tmpkvp;
+					} else {
+						kvp=obj_msgid->kv_list;
+						while(kvp->next != NULL)kvp=kvp->next;
+						kvp->next = tmpkvp;
+					}
+                 }
+
+              
+            }
+            response += (j-k);
+            if(key) {
+                free(key);
+            }
+        }
+    }
+	if (errflag==1){
+		//Error occured Free structure
+		printf("Error occured in parsing msgid file freeing struct for current row\n");
+		if (obj_msgid){
+			kvp=obj_msgid->kv_list;
+			while(kvp!=NULL){
+				if(kvp->key)free(kvp->key);
+				tmpkvp=kvp->next;
+				free(kvp);
+				kvp=tmpkvp;
+			}
+			free(obj_msgid);
+	
+		}
+	}else{
+		
+	    if(!strcmp(fwname,"fortigate")){
+		    printf("Adding msgid to fortigate hash\n");
+		    HASH_ADD_STR(fortigate_msgid_hash,msgid,obj_msgid);
+	    }else if(!strcmp(fwname,"sonicwall")){
+		    printf("Adding msgid to sonicwall hash\n");
+		    HASH_ADD_STR(sonicwall_msgid_hash,msgid,obj_msgid);
+	    }else {
+		    printf("Adding msgid to others hash\n");
+		    HASH_ADD_STR(other_msgid_hash,msgid,obj_msgid);
+	    }
+	}
+    return 1;
+}
+
+
+
+
+
+
+
+int
+parse_msgid_file(char *filename)
+{
+   FILE * fp;
+   char * line = NULL;
+   size_t len = 0;
+   ssize_t read;
+   fp = fopen(filename, "r");
+   if (fp == NULL){
+       printf("Could not open message_id file %s",filename);
+       exit(EXIT_FAILURE);
+   }
+   while ((read = getline(&line, &len, fp)) != -1) {
+       printf("Retrieved line of length %zu :\n", read);
+       line[(int)read-1]='\0';
+       printf("%s\n", line);
+       parse_line(line);	
+   }
+   if (line)
+       free(line);
+   return EXIT_SUCCESS;
+}
+
+
+

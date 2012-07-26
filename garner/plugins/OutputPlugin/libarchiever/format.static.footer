@@ -1,0 +1,306 @@
+  { 0, 0, 0,  0} /* the last null-terminated node */
+
+}; /* end of structure */
+
+const struct _std_event_vars_arch*
+get_var_by_name_arch(const char *name)
+{
+    int i;
+    for(i=0; std_event_vars_arch[i].variable; i++) {
+	if(strcmp(std_event_vars_arch[i].variable, name) == 0) {
+	    return &std_event_vars_arch[i];
+	}
+    }
+    return NULL;
+}
+
+/* LOGGER SUPPORT ROUTINES */
+
+struct _logger *logger_list = NULL;
+
+struct _logger *
+new_logger() 
+{
+    struct _logger *logger;
+
+    logger = calloc(1, sizeof(struct _logger));
+	
+    return logger;
+}
+
+struct _logger * 
+get_logger_by_name(char *name)
+{
+    struct _logger *logger = logger_list;
+
+    while (logger) {
+        if (!strcasecmp(logger->name, name)) {
+    	    return logger;
+        }
+        logger = logger->next;
+    }
+
+    return NULL;
+}
+
+void
+insert_logger_in_list(struct _logger *logger)
+{
+    logger->next = logger_list;
+    logger_list = logger;
+
+    return;
+}
+   
+void
+reset_logger(struct _logger *logger)
+{
+    close(logger->fd);
+    return ;
+}
+
+void
+free_logger_list()
+{
+    struct _logger *logger = logger_list;
+    struct _logger *next;
+
+    while (logger) {
+	next = logger->next;
+	if(logger->fd > 0) {
+	    close(logger->fd);
+	}
+	if(logger->logfile) {
+	    free(logger->logfile);
+	}
+        free(logger->base_dir);
+        free(logger->name);
+        free(logger);
+        logger = next;
+    }
+
+    return;
+}
+
+/* LOGFORMATTER SUPPORT ROUTINES */
+
+static struct _log_format *
+new_listnode(const char *string)
+{
+    struct _log_format *log_format;
+    const struct _std_event_vars_arch *sev;
+
+    arch_log_msg(ARCH_LG_DEBUG, "%s new_listnode : string=%s\n", PLUGIN_NAME, string);
+    log_format = calloc(1, sizeof(struct _log_format));
+    sev = get_var_by_name_arch(string);
+
+    if (sev) {
+        log_format->data = sev;
+        arch_log_msg(ARCH_LG_DEBUG, "%s new_listnode : sev->variable=%s\n", PLUGIN_NAME, sev->variable);
+    }
+    else {
+        log_format->data = strdup(string);
+        log_format->datalen = strlen(string);
+    }
+
+    return log_format;
+}
+
+struct _log_format*
+prepare_log_format(char *string)
+{
+    struct _log_format *head=NULL,*tail=NULL;
+    char *tok, *next;
+
+    tok = strtok_r(string, "%", &next);
+    while(tok) {
+        if(!tail) {
+            head = tail = new_listnode(tok);
+        } else {
+            tail->next = new_listnode(tok);;
+            tail = tail->next;
+        }
+        tok = strtok_r(NULL, "%", &next);
+    }
+
+    return head;
+}
+
+void
+free_log_format(struct _log_format *log_format)
+{
+    struct _log_format *next;
+
+    while(log_format) {
+        next = log_format->next;
+
+	if(log_format->datalen) {
+    	    free((char *)log_format->data);
+	}
+
+	free(log_format);
+	log_format = next;
+    }
+
+    return;
+}
+
+struct _logformatter *logformatter_list = NULL;
+
+struct _logformatter *
+new_logformatter()
+{
+    struct _logformatter *logformatter;
+
+    logformatter = calloc(1, sizeof(struct _logformatter));
+
+    return logformatter;
+}
+
+struct _logformatter *
+get_logformatter_by_name(char *name)
+{
+    struct _logformatter *logformatter = logformatter_list;
+
+    while (logformatter) {
+        if (!strcasecmp(logformatter->name, name)) {
+	    return logformatter;
+	}
+        logformatter = logformatter->next;
+    }
+
+    return NULL;
+}
+
+void
+insert_logformatter_in_list(struct _logformatter *logformatter)
+{
+    logformatter->next = logformatter_list;
+    logformatter_list = logformatter;
+
+    return;
+}
+
+void
+free_logformatter_list()
+{
+    struct _logformatter *logformatter = logformatter_list;
+    struct _logformatter *next;
+
+    while (logformatter) {
+        next = logformatter->next;
+        free_log_format(logformatter->logformat);
+        free(logformatter->name);
+        logformatter = next;
+    }
+
+    return;
+}
+
+/* ARCHIEVER SUPPORT ROUTINES */
+
+struct _archiever *archiever_list = NULL;
+
+struct _archiever *
+new_archiever()
+{
+    struct _archiever *archiever;
+
+    archiever = calloc(1, sizeof(struct _archiever));
+    
+    return archiever;
+}
+
+struct _archiever *
+get_archiever_by_name(char *name)
+{
+    struct _archiever *archiever = archiever_list;
+
+    while (archiever) {
+        if (!strcasecmp(archiever->name, name)) {
+	    return archiever;
+	}
+        archiever = archiever->next;
+    }
+
+    return NULL;
+}
+
+void
+insert_archiever_in_list(struct _archiever *archiever)
+{
+    archiever->next = archiever_list;
+    archiever_list = archiever;
+
+    return;
+}
+
+void
+free_archiever_list()
+{
+    struct _archiever *archiever = archiever_list;
+    struct _archiever *next;
+
+    while (archiever) {
+        next = archiever->next;
+        free(archiever->name);
+        free(archiever);
+        archiever = next;
+    }
+
+    return;
+}
+
+void
+do_rotate_unrotated_archievefiles(void)
+{
+    struct _archiever *archiever = archiever_list;
+
+    while (archiever) {
+	rotate_unrotated_archievefiles(archiever->logger);		
+        archiever = archiever->next;
+    }
+    return ;
+}
+
+void
+archiever_cleanup_parsed_state()
+{
+    do_rotate_unrotated_archievefiles();	
+
+    free_archiever_list();
+    free_logformatter_list();
+    free_logger_list();
+	
+    return ;
+}
+
+int
+archiever_prepare_logmsg(char *buffer, size_t size, 
+			const struct _log_format *log_format, void *data)
+{
+    int remsize = size-1;
+    struct _std_event_vars_arch *sev;
+    u_int8_t *se = data;
+
+    /* initialized global variable g_buf_size to buffer size */
+    g_buf_size = size;	
+
+    while((remsize > 1) && log_format) {
+	arch_log_msg(ARCH_LG_DEBUG, "%s prepare_log : remsize=%d\n", PLUGIN_NAME, remsize);
+
+	if(log_format->datalen) {
+	    //arch_log_msg(ARCH_LG_DEBUG, "%s prepare_log : STRING '%s'\n", PLUGIN_NAME, (char*)log_format->data);
+            APPEND_LOG(log_format->data, log_format->datalen);
+        } else {
+            sev = (struct _std_event_vars_arch *)log_format->data;
+	    //arch_log_msg(ARCH_LG_DEBUG, "%s prepare_log: SE VARIABLE '%s'\n", PLUGIN_NAME, (char *)sev->variable);
+	    remsize = sev->appendlog(buffer, remsize, se + sev->offset);
+        }
+        log_format = log_format->next;
+    }
+    buffer[size-remsize-1] = '\0';
+
+    return size-remsize-1;
+}
+

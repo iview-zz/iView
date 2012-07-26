@@ -1,0 +1,258 @@
+
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include "std_event_private.h"
+#include "std_event.h"
+#include "garner.h"
+
+static int
+__compare_u_int32_t(u_int32_t a, u_int32_t b, char op)
+{
+    /* EQNEQLTGT */
+    switch(op) {
+	case '=':
+	    if(a == b)
+		return 0;
+	    break;
+	case '!':
+	    if(a != b)
+		return 0;
+	    break;
+	case '<':
+	    if(a < b)
+		return 0;
+	    break;
+	case '>':
+	    if(a > b)
+		return 0;
+	    break;
+	default:
+	    xassert(0);
+    }
+    /* condition false */
+    return 1;
+}
+
+int compare_u_int32_t(void *A, void *B, char op)
+{
+    u_int32_t a = *((u_int32_t*)A);
+    u_int32_t b = (u_int32_t)B;
+    
+    log_message(LG_DEBUG, "compare_u_int32_t(%u, %c, %u)\n", a, op, b);
+
+    return __compare_u_int32_t(a, b, op);
+}
+
+int compare_u_int16_t(void *A, void *B, char op)
+{
+    u_int32_t a = *((u_int16_t*)A);
+    u_int32_t b = (u_int32_t)B;
+    
+    log_message(LG_DEBUG, "compare_u_int32_t(%u, %c, %u)\n", a, op, b);
+
+    return __compare_u_int32_t(a, b, op);
+}
+
+int compare_u_int8_t(void *A, void *B, char op)
+{
+    u_int32_t a = *((u_int8_t*)A);
+    u_int32_t b = (u_int32_t)B;
+    
+    log_message(LG_DEBUG, "compare_u_int32_t(%u, %c, %u)\n", a, op, b);
+
+    return __compare_u_int32_t(a, b, op);
+}
+
+
+int compare_date_t(void *A, void *B, char op)
+{
+    return compare_u_int32_t(A, B, op);
+}
+
+int compare_ipaddr_t(void *A, void *B, char op)
+{
+    return compare_u_int32_t(A, B, op);
+}
+
+int compare_direction_t(void *A, void *B, char op)
+{
+    return compare_u_int8_t(A, B, op);
+}
+
+/* case sensitive string match */
+static int
+__compare_string(const char *s1, const char *s2, char op)
+{
+    int m;
+
+    /* EQNEQ */
+
+    m = strcasecmp(s1, s2);
+
+    switch(op) {
+	case '=':
+	    if(!m) {
+		return 0;
+	    }
+	    break;
+	case '!':
+	    if(m) {
+		return 0;
+	    }
+	    break;
+	default:
+	    xassert(0);
+    }
+
+    /* not matched */
+    return 1;
+}
+
+
+int compare_char_array(void *A, void *B, char op)
+{
+    log_message(LG_DEBUG, "compare_char_array(%s, %c, %s)\n", (char*)A, op, (char*)B);
+    return __compare_string(A, B, op);
+}
+
+static int
+__compare_int32_t(int a, int b, char op)
+{
+    /* EQNEQLTGT */
+    switch(op) {
+	case '=':
+	    if(a == b)
+		return 0;
+	    break;
+	case '!':
+	    if(a != b)
+		return 0;
+	    break;
+	case '<':
+	    if(a < b)
+		return 0;
+	    break;
+	case '>':
+	    if(a > b)
+		return 0;
+	    break;
+	default:
+	    xassert(0);
+    }
+    /* condition false */
+    return 1;
+}
+
+int
+compare_int32_t(void *A, void *B, char op)
+{
+    int a = *((int*)A);
+    int b = (int)B;
+
+    log_message(LG_DEBUG, "compare_u_int32_t(%d, %c, %d)\n", a, op, b);
+
+    return __compare_int32_t(a, b, op);
+}
+
+void* typecast_u_int32_t(const char *string, int *error)
+{
+    u_int32_t x;
+    char *end=NULL;
+
+    x = strtoul(string, &end, 0);
+    if(error != NULL) {
+	if(end && *end != '\0') {
+	    *error = 1;
+	} else {
+	    *error = 0;
+	}
+    }
+
+    return (void*)x;
+}
+
+
+void* typecast_u_int16_t(const char *string, int *error)
+{
+    return typecast_u_int32_t(string, error);
+}
+
+void* typecast_u_int8_t(const char *string, int *error)
+{
+    return typecast_u_int32_t(string, error);
+}
+
+void* typecast_date_t(const char *string, int *error)
+{
+    return typecast_u_int32_t(string, error);
+}
+
+void* typecast_ipaddr_t(const char *string, int *error)
+{
+    return typecast_u_int32_t(string, error);
+}
+
+void* typecast_direction_t(const char *string, int *error)
+{
+    return typecast_u_int32_t(string, error);
+}
+
+void* typecast_char_array(const char *string, int *error)
+{
+    return strdup(string);
+}
+
+void* typecast_int32_t(const char *string, int *error)
+{
+    int x;
+    char *end=NULL;
+
+    x = strtol(string, &end, 0);
+    if(error != NULL) {
+	if(end) {
+	    *error = 1;
+	} else {
+	    *error = 0;
+	}
+    }
+
+    return (void*)x;
+}
+
+void free_u_int32_t(void *ptr)
+{
+}
+
+void free_u_int16_t(void *ptr)
+{
+}
+
+void free_u_int8_t(void *ptr)
+{
+}
+
+void free_direction_t(void *ptr)
+{
+}
+
+void free_date_t(void *ptr)
+{
+}
+
+void free_ipaddr_t(void *ptr)
+{
+}
+
+void free_char_array(void *ptr)
+{
+    free(ptr);
+}
+
+void free_int32_t(void *ptr)
+{
+}
+
+struct _std_event_vars
+	std_event_vars[] = {
+

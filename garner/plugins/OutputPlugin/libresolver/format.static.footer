@@ -1,0 +1,249 @@
+  { 0, 0, 0,  0} /* the last null-terminated node */
+
+}; /* end of structure */
+
+const struct _resolver_std_event_vars*
+resolver_get_var_by_name(const char *name)
+{
+    int i;
+    for(i=0; resolver_std_event_vars[i].variable; i++) {
+	if(strncmp(resolver_std_event_vars[i].variable, name, 
+		strlen(resolver_std_event_vars[i].variable)) == 0) {
+	    return &resolver_std_event_vars[i];
+	}
+    }
+    return NULL;
+}
+
+
+/* FIELD FORMAT SUPPORT ROUTINES */
+
+void
+free_field_format(struct _field_format *field_format)
+{
+    struct _field_format *next;
+
+    while(field_format) {
+        next = field_format->next;
+
+        if(field_format->cname) {
+            free(field_format->cname);
+	}
+
+        free(field_format);
+        field_format = next;
+    }
+}
+
+static char*
+resolver_trim_start(const char* data)
+{
+    while(*data && isspace(*data)) {
+        ++data;
+    }
+    return (char*)data;
+}
+
+static char*
+resolver_trim_end(char* data)
+{
+    char* t = data + strlen(data);
+
+    while(t > data && isspace(*(t - 1))) {
+        t--;
+        *t = 0;
+    }
+
+    return data;
+}
+
+static char*
+resolver_trim_space(char* data)
+{
+    if (!data) return NULL;
+
+    data = (char*)resolver_trim_start(data);
+    if (*data == '\0') return NULL;
+    return resolver_trim_end(data);
+}
+
+static struct _field_format *
+new_listnode(char *string)
+{
+    struct _field_format *field_format;
+    const struct _resolver_std_event_vars *sev;
+    char *tok, *next;
+
+    resolver_log_message(RLG_DEBUG, "%s new_listnode : string=%s\n", PLUGIN_NAME, string);
+    field_format = calloc(1, sizeof(struct _field_format));
+
+    /* get column name */
+    tok = strtok_r(string, "#", &next);
+    tok = resolver_trim_space(tok);
+    if(tok) {
+	field_format->cname = strdup(tok);
+	resolver_log_message(RLG_DEBUG, "%s new_listnode : column name=%s\n", PLUGIN_NAME, tok);
+    } else {
+	resolver_log_message(RLG_ERR, "%s new_listnode : Invalid field format string: '%s'\n", 
+	                    PLUGIN_NAME, string);
+	free(field_format) ;
+	return NULL;
+    }
+
+    /* get column data source definition */
+    tok = strtok_r(NULL, "#", &next);
+    tok = resolver_trim_space(tok);
+    if(tok) {
+	sev = resolver_get_var_by_name(tok);
+        if (sev) {
+           field_format->data = (void *)sev;
+           resolver_log_message(RLG_DEBUG, 
+	   		"%s new_listnode : sev->variable=%s\n", PLUGIN_NAME, sev->variable);
+  	} else {
+	   resolver_log_message(RLG_ERR, 
+	   		"%s new_listnode : std_event_vars variable not found : '%s'\n", 
+					PLUGIN_NAME, tok);
+            free(field_format->cname);
+            free(field_format);
+            return NULL;
+    	}
+    } else {
+        resolver_log_message(RLG_ERR, "%s new_listnode : Invalid field format string: '%s'\n", 
+	                    PLUGIN_NAME, string);
+        free(field_format->cname);
+        free(field_format);
+        return NULL;
+    }
+
+    return field_format;
+}
+
+struct _field_format*
+prepare_field_format(char *string)
+{
+    struct _field_format *head=NULL,*tail=NULL,*tmp;
+    char *tok, *next;
+
+    string = resolver_trim_space(string);
+    tok = strtok_r(string, "%", &next);
+
+    while(tok) {
+        if(!tail) {
+            tmp = new_listnode(tok);
+	    if(tmp) {
+                head = tail = tmp ;
+	    } else {
+	        goto release_n_return;
+	    }
+        } else {
+             tmp = new_listnode(tok);
+             if(tmp) {
+                 tail->next = tmp ;
+                 tail = tail->next;
+             } else {
+                 goto release_n_return;
+             }
+        }
+        tok = strtok_r(NULL, "%", &next);
+    }
+    return head;
+
+release_n_return:
+
+    free_field_format(head);
+    return NULL;
+}
+
+
+struct _resolver *resolver_list = NULL;
+
+struct _resolver *
+new_resolver()
+{
+    struct _resolver *resolver;
+
+    resolver = calloc(1, sizeof(struct _resolver));
+
+    return resolver;
+}
+
+struct _resolver *
+get_resolver_by_name(char *name)
+{
+    struct _resolver *resolver = resolver_list;
+
+    while (resolver) {
+        if (!strcasecmp(resolver->name, name)) {
+	    return resolver;
+	}
+        resolver = resolver->next;
+    }
+
+    return NULL;
+}
+
+void
+insert_resolver_in_list(struct _resolver *resolver)
+{
+    resolver->next = resolver_list;
+    resolver_list = resolver;
+}
+
+void
+free_hash_table(struct _hash_table **hash_table)
+{
+    hash_delete_all(hash_table);
+}
+
+void
+free_resolver(struct _resolver **resolver)
+{
+    if (!(*resolver)) return;
+
+    if ((*resolver)->hash_table) { 
+        free_hash_table(&((*resolver)->hash_table));
+    }
+
+    if ((*resolver)->name) {
+        free((*resolver)->name);
+    }
+
+    if ((*resolver)->database_name) { 
+        free((*resolver)->database_name);
+    }
+
+    if ((*resolver)->table_name) {
+        free((*resolver)->table_name);
+    }
+
+    if ((*resolver)->key_format) {
+        free_field_format((*resolver)->key_format);
+    }
+
+    if ((*resolver)->value_format) {
+        free_field_format((*resolver)->value_format);
+    }
+
+    free((*resolver));
+}
+
+void
+free_resolver_list()
+{
+    struct _resolver *resolver = resolver_list;
+    struct _resolver *next;
+
+    while(resolver) {
+        next = resolver->next;
+        free_resolver(&resolver);
+        resolver = next;
+    }
+}
+
+
+void
+resolver_cleanup_parsed_state()
+{
+    free_resolver_list();
+}
+

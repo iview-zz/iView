@@ -1,0 +1,512 @@
+
+<!--
+Automatically created by Apache Jakarta Tomcat JspC.
+Place this fragment in the web.xml before all icon, display-name,
+description, distributable, and context-param elements.
+-->
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.aboutus_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.aboutus_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.accessdenied_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.accessdenied_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.addapplicationname_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.addapplicationname_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.addbookmark_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.addbookmark_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.addBookmarkGroup_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.addBookmarkGroup_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.addprotocolgroup_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.addprotocolgroup_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.addprotocolidentifier_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.addprotocolidentifier_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.archive_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.archive_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.archivelogs_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.archivelogs_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.auditlog_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.auditlog_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.backupfiles_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.backupfiles_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.backuprestore_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.backuprestore_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.Checksum_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.Checksum_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.configdatabase_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.configdatabase_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.dashboardreport_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.dashboardreport_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.Date_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.Date_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.dg_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.dg_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.editdevice_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.editdevice_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.ftpusagesearch_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.ftpusagesearch_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.garnerport_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.garnerport_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.iviewconfig_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.iviewconfig_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.login_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.login_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.logout_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.logout_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.mailscheduler_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.mailscheduler_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.mailusagesearch_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.mailusagesearch_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.maindashboard_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.maindashboard_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.managebookmark_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.managebookmark_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.managedevice_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.managedevice_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.managedevicegroup_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.managedevicegroup_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.managereportprofile_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.managereportprofile_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.manageuser_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.manageuser_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.menu_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.menu_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.newdevicegroup_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.newdevicegroup_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.newmailscheduler_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.newmailscheduler_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.newuser_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.newuser_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.pagefooter_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.pagefooter_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.pageheader_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.pageheader_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.protocolgroup_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.protocolgroup_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.report_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.report_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.reportgroup_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.reportgroup_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.reportprofile_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.reportprofile_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.restorefiles_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.restorefiles_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.schedulebackuprestore_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.schedulebackuprestore_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.search_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.search_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.singlereport_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.singlereport_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.spamsearch_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.spamsearch_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.viewarchive_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.viewarchive_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.viewlog_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.viewlog_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.virussearch_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.virussearch_jsp</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>org.apache.jsp.webpages.webusagesearch_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.webpages.webusagesearch_jsp</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.aboutus_jsp</servlet-name>
+        <url-pattern>/webpages/aboutus.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.accessdenied_jsp</servlet-name>
+        <url-pattern>/webpages/accessdenied.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.addapplicationname_jsp</servlet-name>
+        <url-pattern>/webpages/addapplicationname.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.addbookmark_jsp</servlet-name>
+        <url-pattern>/webpages/addbookmark.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.addBookmarkGroup_jsp</servlet-name>
+        <url-pattern>/webpages/addBookmarkGroup.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.addprotocolgroup_jsp</servlet-name>
+        <url-pattern>/webpages/addprotocolgroup.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.addprotocolidentifier_jsp</servlet-name>
+        <url-pattern>/webpages/addprotocolidentifier.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.archive_jsp</servlet-name>
+        <url-pattern>/webpages/archive.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.archivelogs_jsp</servlet-name>
+        <url-pattern>/webpages/archivelogs.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.auditlog_jsp</servlet-name>
+        <url-pattern>/webpages/auditlog.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.backupfiles_jsp</servlet-name>
+        <url-pattern>/webpages/backupfiles.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.backuprestore_jsp</servlet-name>
+        <url-pattern>/webpages/backuprestore.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.Checksum_jsp</servlet-name>
+        <url-pattern>/webpages/Checksum.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.configdatabase_jsp</servlet-name>
+        <url-pattern>/webpages/configdatabase.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.dashboardreport_jsp</servlet-name>
+        <url-pattern>/webpages/dashboardreport.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.Date_jsp</servlet-name>
+        <url-pattern>/webpages/Date.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.dg_jsp</servlet-name>
+        <url-pattern>/webpages/dg.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.editdevice_jsp</servlet-name>
+        <url-pattern>/webpages/editdevice.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.ftpusagesearch_jsp</servlet-name>
+        <url-pattern>/webpages/ftpusagesearch.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.garnerport_jsp</servlet-name>
+        <url-pattern>/webpages/garnerport.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.iviewconfig_jsp</servlet-name>
+        <url-pattern>/webpages/iviewconfig.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.login_jsp</servlet-name>
+        <url-pattern>/webpages/login.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.logout_jsp</servlet-name>
+        <url-pattern>/webpages/logout.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.mailscheduler_jsp</servlet-name>
+        <url-pattern>/webpages/mailscheduler.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.mailusagesearch_jsp</servlet-name>
+        <url-pattern>/webpages/mailusagesearch.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.maindashboard_jsp</servlet-name>
+        <url-pattern>/webpages/maindashboard.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.managebookmark_jsp</servlet-name>
+        <url-pattern>/webpages/managebookmark.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.managedevice_jsp</servlet-name>
+        <url-pattern>/webpages/managedevice.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.managedevicegroup_jsp</servlet-name>
+        <url-pattern>/webpages/managedevicegroup.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.managereportprofile_jsp</servlet-name>
+        <url-pattern>/webpages/managereportprofile.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.manageuser_jsp</servlet-name>
+        <url-pattern>/webpages/manageuser.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.menu_jsp</servlet-name>
+        <url-pattern>/webpages/menu.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.newdevicegroup_jsp</servlet-name>
+        <url-pattern>/webpages/newdevicegroup.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.newmailscheduler_jsp</servlet-name>
+        <url-pattern>/webpages/newmailscheduler.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.newuser_jsp</servlet-name>
+        <url-pattern>/webpages/newuser.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.pagefooter_jsp</servlet-name>
+        <url-pattern>/webpages/pagefooter.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.pageheader_jsp</servlet-name>
+        <url-pattern>/webpages/pageheader.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.protocolgroup_jsp</servlet-name>
+        <url-pattern>/webpages/protocolgroup.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.report_jsp</servlet-name>
+        <url-pattern>/webpages/report.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.reportgroup_jsp</servlet-name>
+        <url-pattern>/webpages/reportgroup.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.reportprofile_jsp</servlet-name>
+        <url-pattern>/webpages/reportprofile.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.restorefiles_jsp</servlet-name>
+        <url-pattern>/webpages/restorefiles.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.schedulebackuprestore_jsp</servlet-name>
+        <url-pattern>/webpages/schedulebackuprestore.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.search_jsp</servlet-name>
+        <url-pattern>/webpages/search.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.singlereport_jsp</servlet-name>
+        <url-pattern>/webpages/singlereport.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.spamsearch_jsp</servlet-name>
+        <url-pattern>/webpages/spamsearch.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.viewarchive_jsp</servlet-name>
+        <url-pattern>/webpages/viewarchive.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.viewlog_jsp</servlet-name>
+        <url-pattern>/webpages/viewlog.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.virussearch_jsp</servlet-name>
+        <url-pattern>/webpages/virussearch.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.webpages.webusagesearch_jsp</servlet-name>
+        <url-pattern>/webpages/webusagesearch.jsp</url-pattern>
+    </servlet-mapping>
+
+<!--
+All session-config, mime-mapping, welcome-file-list, error-page, taglib,
+resource-ref, security-constraint, login-config, security-role,
+env-entry, and ejb-ref elements should follow this fragment.
+-->

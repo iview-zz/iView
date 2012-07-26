@@ -1,0 +1,6 @@
+/*Changes of "port_t" */
+1) plugins/OutputPlugin/libresolver/format.static.header
+2) std_event.h
+3) std_event.static.header
+4) plugins/OutputPlugin/libmysql/format.static.header
+5) plugins/OutputPlugin/libarchiever/format.static.header

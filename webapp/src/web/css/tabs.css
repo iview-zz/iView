@@ -1,0 +1,312 @@
+/* ***********************************************************************
+*  Cyberoam iView - The Intelligent logging and reporting solution that 
+*  provides network visibility for security, regulatory compliance and 
+*  data confidentiality 
+*  Copyright  (C ) 2009  Elitecore Technologies Ltd.
+*  
+*  This program is free software: you can redistribute it and/or modify 
+*  it under the terms of the GNU General Public License as published by 
+*  the Free Software Foundation, either version 3 of the License, or
+*  (at your option) any later version.
+*  
+*  This program is distributed in the hope that it will be useful, but 
+*  WITHOUT ANY WARRANTY; without even the implied warranty of 
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU 
+*  General Public License for more details.
+*  
+*  You should have received a copy of the GNU General Public License 
+*  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*  
+*  The interactive user interfaces in modified source and object code 
+*  versions of this program must display Appropriate Legal Notices, as 
+*  required under Section 5 of the GNU General Public License version 3.
+*  
+*  In accordance with Section 7(b) of the GNU General Public License 
+*  version 3, these Appropriate Legal Notices must retain the display of
+*   the "Cyberoam Elitecore Technologies Initiative" logo.
+*************************************************************************/
+
+/*.lefttab_act{
+	float: left;
+	background: url("../images/act_tabl.bmp");
+	width: 1px;
+	height: 35px;
+	margin-left: 0px;
+}
+.middletab_act{
+	float: left;
+	height: 35px;
+	background: url("../images/act_tabm.bmp");
+	text-align: center;
+	border-style: solid;
+	border-width: 0px;
+	font-weight: bold;
+	font-family: arial;
+	font-size:15px;
+	vertical-align: middle;
+}
+.righttab_act{
+	float: left;
+	background: url("../images/act_tabr.bmp");
+	width: 8px;
+	height: 35px;
+	margin-right: 0px;
+}
+.lefttab_inact{
+	float: left;
+	background: url("../images/inact_tabl.bmp");
+	width: 1px;
+	height: 35px;
+	margin-left: 0px;
+}
+.middletab_inact{
+	float: left;
+	background: url("../images/inact_tabm.bmp");
+	height: 35px;
+	text-align: center;
+	border-style: solid;
+	border-width: 0px;
+	font-weight: bold;
+	font-family: arial;
+	font-size:15px;
+	vertical-align: middle;
+}
+.righttab_inact{
+	float: left;
+	background: url("../images/inact_tabr.bmp");
+	width: 8px;
+	height: 35px;
+	margin-right: 0px;
+}*/
+.content_act{
+	height: auto;
+	visibility: visible;
+	background-color: #FFFFFF;
+	position: absolute;
+	font: 12px sans-serif;
+	overflow:auto;
+}
+.content_head{
+	background-color: #F2F2F2;
+	border: 1px solid #E2E2E2;
+	border-bottom: 0px solid #E2E2E2;
+	font: 12px sans-serif;
+}
+/*.table_tab{
+	border-color: rgb(194,201,207);
+	border-style: solid;
+	border: 1px;
+}*/
+.content_inact{
+	visibility: hidden;
+	position: absolute;
+	border: 0px;
+}
+/*.searchtab{
+	float: left;
+	height: 35px;
+	font-weight: bold;
+	font-family: arial;
+	text-align: left;
+	vertical-align: middle;
+	font-weight: bold;
+	font-family: arial;
+	font-size:15px;
+}
+.seperator{
+	height: 3px;
+}
+.lineleft{
+	float: left;
+	height: 3px;
+	background: url("../images/border.bmp");
+	border-top: 1px solid rgb(194,201,207);
+	border-bottom: 0px solid rgb(194,201,207);
+}
+.lineright{
+	float: left;
+	height: 3px;
+	background: url("../images/border.bmp");
+	border-top: 1px solid rgb(233,238,241);
+	border-bottom: 0px solid rgb(194,201,207);
+}
+.tabmenu{
+	background: url("../images/tabmenu.bmp");
+	height: 29px;
+}*/
+a.tab:link {
+	text-decoration: none;
+	font: 12px arial;
+	font-weight: 600;
+}
+a.tab:visited{
+	text-decoration: none;
+	font: 12px arial;
+	font-weight: 600;
+}
+a.tab:hover{
+	text-decoration: none;
+	font: 12px arial;
+	font-weight: 600;
+}
+a.tab:active{
+	text-decoration: none;
+	font: 12px arial;
+	font-weight: 600;
+}
+.criButton{
+	background: transparent url("../images/button1.bmp");
+	width: 125px;
+	color: rgb(58,78,87);
+	font-weight: bold;
+	font-family: arial;
+}
+.serButton{
+	background: transparent url("../images/button2.bmp");
+	width: 75px;
+	color: rgb(255,255,255);
+	font-weight: bold;
+	font-size:11px;
+	font-family: arial;
+	height:20px;
+	border:1px solid #999999;
+}
+.advSearchTab{
+	margin-left:0.25%;
+	margin-right:0.25%;
+	border:1px solid #D9D9D9;
+}
+.advSearchtdTab{
+	background: #F1F1F1;
+}
+.advSearchimgTab{
+	margin: 3px;
+}
+div.RowData{
+	background: #FFFFFF;
+	border-top: 1px solid #E2E2E2;
+}
+div.trdark{
+	border: thin solid #E2E2E2;
+	border-top: 1px solid #E2E2E2;
+	border-bottom: 1px solid #E2E2E2;
+	background-color: #F9F9F9;
+	height:auto;
+	width: inherit;
+	padding: 3px;
+	font-size:10px;
+	font-family: tahoma,arial,san-serif;
+	line-height: 16px;
+	margin-bottom:2px;
+}
+div.trdark1{
+	border: thin solid #E2E2E2;
+	border-top: 1px solid #E2E2E2;
+	border-bottom: 1px solid #E2E2E2;
+	background-color: #FFFED2;
+	height:auto;
+	width: inherit;
+	padding: 3px;
+	font-size:10px;
+	font-family: tahoma,arial,san-serif;
+	line-height: 16px;
+	margin-bottom:2px;
+}
+div.trlight{
+	border: thin solid #E2E2E2;
+	border-top: 1px solid #E2E2E2;
+	border-bottom: 1px solid #E2E2E2;
+	background-color: #FFFFFF;
+	height:auto;
+	width: inherit;
+	padding: 3px;
+	font-size:10px;
+	font-family: tahoma,arial,san-serif;
+	line-height: 16px;
+	margin-bottom:2px;
+}
+div.trlight1{
+	border: thin solid #E2E2E2;
+	border-top: 1px solid #E2E2E2;
+	border-bottom: 1px solid #E2E2E2;
+	background-color: #FFFED2;
+	height:auto;
+	width: inherit;
+	padding: 3px;
+	font-size: 10px;
+	font-family: tahoma,arial,san-serif;
+	line-height: 16px;
+	margin-bottom:2px;
+}
+table.innerTableData1 { 
+	width : 100%;
+	border: 0px solid #d8d8d8;
+	background-color: #FFFFFF;
+}
+table.innerTableData2 { 
+	width : 100%;
+	border: 0px solid #d8d8d8;
+	background-color: #FFFED2;
+}
+td.innertddata	{
+	color: #313131;
+	font-size: 11px;
+	border-bottom: solid 1px #F0F0F0;
+	overflow: hidden;
+	white-space: nowrap;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	height: 18px;
+}
+tr.trdark1{ 
+	background-color: #FFFED2;
+	margin: 2px;
+}
+tr.trlight1{
+	background-color: #FFFED2;
+	margin: 2px;
+}
+.tabhead{
+	font-size:15px;
+	font-family: arial;
+	font-weight:bold;
+	height: 30px;
+}
+.formatLogs{
+	background-color: rgb(233,238,241);
+	border-top: solid 1px rgb(187,194,200);
+	border-left: solid 1px rgb(187,194,200);
+	border-right: solid 1px rgb(187,194,200);
+	text-align:center;
+	color: #425864;
+}
+.rowLogs{
+	background-color: rgb(241,241,241);
+	border-top: solid 1px rgb(210,208,209);
+	border-left: solid 1px rgb(210,208,209);
+	border-right: solid 1px rgb(210,208,209);
+	text-align:center;
+	color: #242223;
+}
+.tabSep{
+	background-color: rgb(233,238,241);
+	border: 0px solid;
+	border-top: 1px solid rgb(187,194,200);
+	border-bottom: 1px solid rgb(187,194,200);
+	line-height: 4px;
+}
+.tabSep1{
+	background-color: rgb(233,238,241);
+	border: 0px solid rgb(187,194,200);
+	border-bottom: 1px solid rgb(187,194,200);
+	border-top: 1px solid rgb(233,238,241);
+	line-height: 4px;
+}
+.archive{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+	text-align: center;
+	color: black;
+	float: left;
+	padding: 8px;
+}

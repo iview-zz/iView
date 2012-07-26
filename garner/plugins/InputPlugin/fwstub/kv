@@ -1,0 +1,12 @@
+fwstub_yacc.c:	g_log->log_id = (yyvsp[(2) - (2)].num);
+fwstub_yacc.c:	printf("\tID_MAP ID: %d\n", g_log->log_id);
+fwstub_yacc.c:	if(g_log->log_regex) {
+fwstub_yacc.c:	    free(g_log->log_regex);
+fwstub_yacc.c:	g_log->log_regex = (yyvsp[(2) - (2)].cptr);
+fwstub_yacc.c:	printf("\tID_MAP_VALUE: %s\n", g_log->log_regex);
+fwstub_yacc.y:	g_log->log_id = $2;
+fwstub_yacc.y:	printf("\tID_MAP ID: %d\n", g_log->log_id);
+fwstub_yacc.y:	if(g_log->log_regex) {
+fwstub_yacc.y:	    free(g_log->log_regex);
+fwstub_yacc.y:	g_log->log_regex = $2;
+fwstub_yacc.y:	printf("\tID_MAP_VALUE: %s\n", g_log->log_regex);

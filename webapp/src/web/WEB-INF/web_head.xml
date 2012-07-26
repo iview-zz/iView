@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+
+  <display-name>iView</display-name>
+  <description>
+     Cyberoam reporting tool
+  </description>
+  <listener>
+		 <listener-class>org.cyberoam.iview.utility.GarnerManager</listener-class>
+  </listener> 
+  <servlet>
+        <servlet-name>
+           InitServlet
+        </servlet-name>
+        <servlet-class>
+           org.cyberoam.iview.servlets.InitServlet
+        </servlet-class>
+        <load-on-startup>
+			0
+        </load-on-startup>
+  </servlet>  
+
+  <servlet>
+    <servlet-name>webdav</servlet-name>
+    <servlet-class>org.apache.catalina.servlets.WebdavServlet</servlet-class>
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>0</param-value>
+    </init-param>
+    <init-param>
+      <param-name>listings</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <!-- Uncomment this to enable read and write access -->
+<!--
+    <init-param>
+      <param-name>readonly</param-name>
+      <param-value>false</param-value>
+    </init-param>
+-->
+    <!--load-on-startup>1</load-on-startup-->
+  </servlet>
+<servlet>
+        <servlet-name>iview</servlet-name>
+        <servlet-class>
+	    org.cyberoam.iview.servlets.iViewController
+        </servlet-class>
+</servlet>
+<servlet-mapping>
+        <servlet-name>iview</servlet-name>
+        <url-pattern>/iview</url-pattern>
+</servlet-mapping>
+<servlet>
+    <servlet-name>AjaxController</servlet-name>
+    <servlet-class>
+	    org.cyberoam.iview.servlets.AjaxController
+    </servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>AjaxController</servlet-name>
+    <url-pattern>/AjaxController</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>DisplayChart</servlet-name>
+    <servlet-class>org.jfree.chart.servlet.DisplayChart</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>DisplayChart</servlet-name>
+	<url-pattern>/DisplayChart</url-pattern>
+</servlet-mapping>
+
+<servlet>
+        <servlet-name>
+           PdfGenerator
+        </servlet-name>
+        <servlet-class>
+           org.cyberoam.iview.servlets.PdfGenerator
+        </servlet-class>
+  </servlet>
+<servlet-mapping>
+	<servlet-name>PdfGenerator</servlet-name>
+	<url-pattern>/iview.pdf</url-pattern>
+</servlet-mapping>
+<servlet>
+        <servlet-name>
+           ExcelFileGenerator
+        </servlet-name>
+        <servlet-class>
+           org.cyberoam.iview.servlets.ExcelFileGenerator
+        </servlet-class>
+  </servlet>
+<servlet-mapping>
+	<servlet-name>ExcelFileGenerator</servlet-name>
+	<url-pattern>/iview.xls</url-pattern>
+</servlet-mapping>
+<servlet>
+        <servlet-name>BackupServlet</servlet-name>
+        <servlet-class>
+	    org.cyberoam.iview.servlets.BackupServlet
+        </servlet-class>
+</servlet>
+<servlet-mapping>
+        <servlet-name>BackupServlet</servlet-name>
+        <url-pattern>/backup/*</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+        <servlet-name>BackupServlet</servlet-name>
+        <url-pattern>/troubleshoot/*</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+        <servlet-name>BackupServlet</servlet-name>
+        <url-pattern>/BackupServlet</url-pattern>
+</servlet-mapping>

@@ -1,0 +1,166 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+#include "../../../src/std_event.h"
+#include "format.h"
+#include "hash.h"
+
+
+int
+string_to_u_int32_t(const char *src, void *val, const u_int32_t len)
+{
+    u_int32_t *dst = (u_int32_t *) val;
+    if (!sscanf(src,"%u", dst)) {
+	return 1;
+    }
+    return 0;
+}
+
+int
+string_to_u_int8_t(const char *src, void *val, const u_int32_t len)
+{
+    u_int8_t *dst = (u_int8_t *) val;
+    if (!sscanf(src,"%c", dst)) {
+	return 1;
+    }
+    return 0;
+}
+
+int
+string_to_char_array(const char *src, void *val, const u_int32_t len)
+{
+    char *dst = (char *) val;
+    if (!strncpy(dst, src, len)) {
+	return 1;
+    }
+    return 0;
+}
+
+int
+string_to_u_int16_t(const char *src, void *val, const u_int32_t len)
+{
+    u_int16_t *dst = (u_int16_t *) val;
+    if (!sscanf(src,"%hu", dst)) {
+	return 1;
+    }
+    return 0;
+}
+
+int
+string_to_date_t(const char *src, void *val, const u_int32_t len)
+{
+    return 0;
+}
+
+int
+string_to_ipaddr_t(const char *src, void *val, const u_int32_t len)
+{
+    return 0;
+}
+
+int
+string_to_int32_t(const char *src, void *val, const u_int32_t len)
+{
+    int32_t *dst = (int32_t *) val;
+    if (!sscanf(src,"%d", dst)) {
+	return 1;
+    }
+    return 0;
+}
+
+int
+string_to_direction_t(const char *src, void *val, const u_int32_t len)
+{
+    return 0;
+}
+
+
+int
+print_u_int32_t(void *val, int printflag, char *copyto, int len)
+{
+    int ret;
+    
+    if (!printflag && copyto) {
+        ret = snprintf(copyto, len, "%u:", *((u_int32_t*) val));
+    } else {
+        resolver_log_message(RLG_NONE, " '%u' ", *((u_int32_t*) val));
+    }
+    return ret;
+}
+
+int
+print_u_int8_t(void *val, int printflag, char *copyto, int len)
+{
+    int ret;
+    
+    if (!printflag && copyto) {
+        ret = snprintf(copyto, len, "%d:", *((u_int8_t*) val));
+    } else {
+	resolver_log_message(RLG_NONE, " '%d' ", *((u_int8_t*) val));
+    }
+    return ret;
+}
+
+int
+print_char_array(void *val, int printflag, char *copyto, int len)
+{
+    int ret;
+
+    if (!printflag && copyto) {
+        ret = snprintf(copyto, len, "%s:", (char*) val);
+    } else {
+	resolver_log_message(RLG_NONE, " '%s' ", (char*) val);
+    }
+    return ret;
+}
+
+int
+print_u_int16_t(void *val, int printflag, char *copyto, int len)
+{
+    int ret;
+
+    if (!printflag && copyto) {
+        ret = snprintf(copyto, len, "%hu:", *((u_int16_t*) val));
+    } else {
+        resolver_log_message(RLG_NONE, " '%hu' ", *((u_int16_t*) val));
+    }
+    return ret;
+}
+
+int
+print_date_t(void *val, int printflag, char *copyto, int len)
+{
+    return 0;
+}
+
+int
+print_ipaddr_t(void *val, int printflag, char *copyto, int len)
+{
+    return 0;
+}
+
+int
+print_int32_t(void *val, int printflag, char *copyto, int len)
+{
+    int ret;
+
+    if (!printflag && copyto) {
+        ret = snprintf(copyto, len, "%d:", *((int32_t*) val));
+    } else {
+        resolver_log_message(RLG_NONE, " '%d' ", *((int32_t*) val));
+    }
+    return ret;
+}
+
+int
+print_direction_t(void *val, int printflag, char *copyto, int len)
+{
+    return 0;
+}
+
+static struct _std_event resolv_std_ev;
+struct _resolver_std_event_vars
+resolver_std_event_vars[] = {
+

@@ -1,0 +1,257 @@
+
+key-value Linux_Iptables_Netfilter {
+    delimiter " "
+    Word-boundry "\""
+    Keyval-seperator "="
+
+    keyval-pair std_event.log.messageid  get_other_mid("log_type")
+    keyval-pair std_event.device.device_id      "device_id"
+#Allowed connection format
+    keyval-pair std_event.network.src_ip        "orig_src"
+    keyval-pair std_event.network.dst_ip        "orig_dst"
+    keyval-pair std_event.network.ip_protocol   "orig_proto"
+    keyval-pair std_event.network.l4_src        "orig_spt"
+    keyval-pair std_event.network.l4_dst        "orig_dpt"
+    keyval-pair std_event.network.recvbytes     "orig_bytes"
+    keyval-pair std_event.network.sentbytes     "reply_bytes"
+
+#Dropped packet format
+    keyval-pair std_event.fw.src_zone           "in_interface"
+    keyval-pair std_event.fw.dst_zone           "out_interface"
+    keyval-pair std_event.network.src_ip        "src"
+    keyval-pair std_event.network.dst_ip        "dst"
+    keyval-pair std_event.network.ip_protocol   "proto"
+    keyval-pair std_event.network.l4_src        "src_port"
+    keyval-pair std_event.network.l4_dst        "dst_port"
+
+
+
+}
+
+Key-value fortigate {
+
+    delimiter " "
+    Word-boundry "\""
+    Keyval-seperator "="
+
+    keyval-pair std_event.log.messageid		get_forti_mid("log_id")
+    keyval-pair std_event.system.timestamp      get_date("date")
+    keyval-pair std_event.system.timestamp      get_time("time")
+    keyval-pair std_event.device.device_id      "device_id"
+    keyval-pair std_event.system.username       "user"
+    keyval-pair std_event.system.fwrule 	"rule"
+    keyval-pair std_event.network.ip_protocol   "proto"
+    keyval-pair std_event.network.src_ip 	"src"
+    keyval-pair std_event.network.dst_ip	"dst"
+    keyval-pair std_event.fw.src_zone		"src_int"
+    keyval-pair std_event.fw.dst_zone		"dst_int"
+    keyval-pair std_event.network.recvbytes     "rcvd"
+    keyval-pair std_event.network.sentbytes     "sent"
+    keyval-pair std_event.network.l4_src        "src_port"
+    keyval-pair std_event.network.l4_dst        "dst_port"
+    keyval-pair std_event.fw.t_src_ip           "tran_ip"
+    keyval-pair std_event.fw.t_dst_port         "tran_port"
+    keyval-pair std_event.content_filter.category "cat_desc"
+    keyval-pair std_event.http_ftp.domain 	"hostname"
+    keyval-pair std_event.http_ftp.url          "url"
+#    keyval-pair std_event.system.application    "service"
+    keyval-pair std_event.idp.signature_msg 	"msg"
+    keyval-pair std_event.network.l4_dst        "dport"
+    keyval-pair std_event.network.l4_src	"sport"
+    keyval-pair std_event.log.severity 		get_sev("severity")
+    keyval-pair std_event.mail.rcpts 		"to"
+    keyval-pair std_event.mail.sender 		"from"
+    keyval-pair std_event.virus.virusname 	"virus"
+    keyval-pair std_event.content_filter.contentname 		"file"
+
+}
+
+Key-value sonicwall {
+
+    delimiter " "
+    Word-boundry "\""
+    Keyval-seperator "="
+
+    keyval-pair std_event.device.device_id      "sn"
+    keyval-pair std_event.log.messageid         get_sonic_mid("m")
+    keyval-pair std_event.system.timestamp      "time"
+    keyval-pair std_event.system.username       "usr"
+    keyval-pair std_event.network.src_ip        sonic_get_ip("src")
+    keyval-pair std_event.network.dst_ip        sonic_get_ip("dst")
+    keyval-pair std_event.network.l4_src        sonic_get_port("src")
+    keyval-pair std_event.network.l4_dst        sonic_get_port("dst")
+    keyval-pair std_event.fw.src_zone           sonic_get_zone("src")
+    keyval-pair std_event.fw.dst_zone           sonic_get_zone("dst")
+    keyval-pair std_event.network.ip_protocol   p_normalize(sonic_get_proto("proto"))
+    keyval-pair std_event.network.recvbytes     "rcvd"
+    keyval-pair std_event.network.sentbytes     "sent"
+    keyval-pair std_event.http_ftp.domain       "dstname"
+    keyval-pair std_event.http_ftp.url          "arg"
+}
+
+
+Key-value squid {
+
+    delimiter " "
+    Word-boundry "\""
+    Keyval-seperator "="
+
+
+    keyval-pair std_event.log.log_component     r_log_component("log_component")
+    keyval-pair std_event.log.log_subtype       r_log_subtype("log_subtype")
+    keyval-pair std_event.log.log_type          r_log_type("log_type")
+    keyval-pair std_event.system.username       "user_name"
+    keyval-pair std_event.network.src_ip        "src_ip"
+    keyval-pair std_event.http_ftp.domain       get_domain("url")
+    keyval-pair std_event.content_filter.contenttype "tenttype"
+    keyval-pair std_event.network.ip_protocol   p_normalize("protocol")
+    keyval-pair std_event.network.l4_dst        "dst_port"
+    keyval-pair std_event.device.device_id      "device_id"
+    keyval-pair std_event.content_filter.category "category"
+    keyval-pair std_event.http_ftp.url          "url"
+    keyval-pair std_event.network.recvbytes     "recv_bytes"
+
+}
+
+
+Key-value cyberoam {
+
+    delimiter " "
+    Word-boundry "\""
+    Keyval-seperator "="
+
+
+    keyval-pair std_event.system.timestamp 	get_date("date")
+    keyval-pair std_event.system.timestamp 	get_time("time")
+    keyval-pair std_event.network.ip_protocol 	p_normalize("protocol")
+    keyval-pair std_event.network.recvbytes 	"recv_bytes"
+    keyval-pair std_event.content_filter.contentname 		"filename"
+    keyval-pair std_event.fw.v_conn_id 		ignore("vconnid")
+    keyval-pair std_event.network.src_ip 	"src_ip"
+    keyval-pair std_event.network.dst_ip 	"dst_ip"
+    keyval-pair std_event.fw.t_src_ip 		"tran_src_ip"
+    keyval-pair std_event.fw.t_dst_ip 		"tran_dst_ip"
+    keyval-pair std_event.log.log_component 	r_log_component("log_component")
+    keyval-pair std_event.log.log_subtype 	r_log_subtype("log_subtype")
+    keyval-pair std_event.log.severity 		r_priority("priority")
+    keyval-pair std_event.fw.direction 		r_fw_dir("dir_disp")
+    keyval-pair std_event.http_ftp.direction 	r_ftp_dir("FTP_direction")
+    keyval-pair std_event.log.log_type 		r_log_type("log_type")
+    keyval-pair std_event.fw.t_src_port 	"tran_src_port"
+    keyval-pair std_event.fw.t_dst_port 	"tran_dst_port"
+    keyval-pair std_event.network.l4_src 	"icmp_type"
+    keyval-pair std_event.network.l4_dst 	"icmp_code"
+    keyval-pair std_event.network.l4_src 	"src_port"
+    keyval-pair std_event.network.l4_dst 	"dst_port"
+    keyval-pair std_event.network.src_mac 	"src_mac"
+    keyval-pair std_event.content_filter.category "category"
+    keyval-pair std_event.content_filter.contentlength "file_size"
+    keyval-pair std_event.content_filter.contenttype "contenttype"
+    keyval-pair std_event.device.deployment_mode "deployment_mode"
+    keyval-pair std_event.device.device_id 	"device_id"
+    keyval-pair std_event.fw.src_zone 		"srczonetype"
+    keyval-pair std_event.fw.dst_zone 		"dstzonetype"
+    keyval-pair std_event.fw.dst_zone 		"dstname"
+    keyval-pair std_event.fw.duration 		"duration"
+    keyval-pair std_event.fw.src_zone 		"srcname"
+    keyval-pair std_event.fw.conn_id 		"connid"
+    keyval-pair std_event.http_ftp.domain 	"domainname"
+    keyval-pair std_event.http_ftp.domain 	"dstdomain"
+    keyval-pair std_event.http_ftp.domain	get_domain("url")
+    keyval-pair std_event.http_ftp.req_command 	"ftpcommand"
+    keyval-pair std_event.http_ftp.response 	"httpresponsecode"
+    keyval-pair std_event.http_ftp.url 		"url"
+    keyval-pair std_event.http_ftp.url 		"FTP_url"
+    keyval-pair std_event.http_ftp.url 		"file_path"
+    keyval-pair std_event.idp.classification 	"classification"
+    keyval-pair std_event.idp.rule_priority 	"rule_priority"
+    keyval-pair std_event.idp.signature_id 	"signature_id"
+    keyval-pair std_event.idp.signature_msg 	"signature_msg"
+    keyval-pair std_event.log.status 		"status"
+    keyval-pair std_event.mail.dstdom 		"dst_domainname"
+    keyval-pair std_event.mail.mail_size 	"mailsize"
+    keyval-pair std_event.mail.messageid 	"mailid"
+    keyval-pair std_event.mail.qname 		"quarantine"
+    keyval-pair std_event.mail.rcpts 		"to_email_address"
+    keyval-pair std_event.mail.sender 		"from_email_address"
+    keyval-pair std_event.mail.srcdom 		"src_domainname"
+    keyval-pair std_event.mail.subject 		"subject"
+    keyval-pair std_event.mail.subject 		"email_subject"
+    keyval-pair std_event.network.dst_port_name "out_interface"
+    keyval-pair std_event.network.recvpackets 	"recv_pkts"
+    keyval-pair std_event.network.sentbytes 	"sent_bytes"
+    keyval-pair std_event.network.sentpackets 	"sent_pkts"
+    keyval-pair std_event.network.src_port_name "in_interface"
+    keyval-pair std_event.spam.spam_action 	"spamaction"
+    keyval-pair std_event.spam.spam_reason 	"reason"
+    keyval-pair std_event.system.application 	"application"
+    keyval-pair std_event.system.applicationid 	"application_id"
+    keyval-pair std_event.system.avaspolicy 	"av_policy_name"
+    keyval-pair std_event.system.avaspolicy 	"spam_policy_name"
+    keyval-pair std_event.system.fwruleid 	"fw_rule_id"
+    keyval-pair std_event.system.fwrule 	"fw_rule_id"
+    keyval-pair std_event.system.iapid 		"iap"
+    keyval-pair std_event.system.idppolicyid 	"idp_policy_id"
+    keyval-pair std_event.system.usergpname 	"user_gp"
+    keyval-pair std_event.system.username 	"user_name"
+    keyval-pair std_event.virus.virusname 	"virus"
+
+
+
+}
+
+Key-value 24online {
+
+    delimiter " "
+    Word-boundry "\""
+    Keyval-seperator "="
+
+    keyval-pair std_event.log.messageid         get_other_mid("logid")
+    keyval-pair std_event.system.timestamp      get_date("date")
+    keyval-pair std_event.system.timestamp      get_time("time")
+    keyval-pair std_event.device.device_id      "device_id"
+    keyval-pair std_event.network.ip_protocol   p_normalize("protocol")
+    keyval-pair std_event.network.src_ip        "clientip"
+    keyval-pair std_event.system.username       "username"
+    keyval-pair std_event.http_ftp.domain       "sitename"
+    keyval-pair std_event.http_ftp.url          "url"
+    keyval-pair std_event.network.l4_dst        "dst_port"
+    keyval-pair std_event.network.l4_src        "src_port"
+    keyval-pair std_event.network.dst_ip        "dst_ip"
+    keyval-pair std_event.fw.src_zone           "in_interface"
+    keyval-pair std_event.fw.dst_zone           "out_interface"
+
+}
+
+Regex ciscoASA {
+
+    Idregex " ($logtype) = ( $log =~ /^[A-Z].*ASA-[0-6]-(.*?):.*/ );"
+
+    Idmap 106023 {
+
+	idmap-Value " ($action,$srcip,$srcport,$destip,$destport,$user) = ( $log =~ /^[A-Z].*ASA-[0-6]-$logtype: (.*?) tcp src .*:(.*?)\\/(.*?) dst .*:(.*?)\\/(.*?) by (.*?) .*/ );"
+
+	keyval-pair std_event.log.log_type "action"
+
+	keyval-pair std_event.log.log_component "srcport"
+	keyval-pair std_event.network.src_ip "srcip"
+
+	keyval-pair std_event.network.dst_ip xyz(dummey_conversion(ip_to_int("destip")))
+	keyval-pair std_event.network.l4_dst "destip"
+
+    }
+
+    Idmap 1020 {
+
+	idmap-Value "^[0-9]*. Teardown from (%srcip) to (%dstip) *.  Total data (%bytes) transferred ."
+	keyval-pair std_event.log.log_type "1"
+
+	keyval-pair std_event.log.log_component "9"
+	keyval-pair std_event.network.src_ip "%srcip"
+
+	keyval-pair std_event.network.dst_ip "%dstip"
+	keyval-pair std_event.network.recvbytes "%bytes"
+
+    }
+}
+

@@ -1,0 +1,158 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <netinet/in.h>
+#include <time.h>
+
+#include "../../../src/std_event.h"
+#include "format.h"
+#include "utils.h"
+
+
+#define FMT_DATE_NORMAL "%Y-%m-%d %H:%M:%S"
+#define AVAS_MAX 10
+
+static u_int32_t g_buf_size ;
+
+/* FOR LOG MESSAGE PREPARATION LOGIC */
+
+#define APPEND_LOG(str, len) {                      \
+    int buf_index = g_buf_size - remsize - 1;      \
+    if(len > remsize) {                             \
+        memcpy(buffer + buf_index, str, remsize);   \
+        remsize = 0;                                \
+    } else {                                        \
+        memcpy(buffer + buf_index, str, len);       \
+        remsize -= len;                             \
+    }                                               \
+}
+
+int
+append_direction_t(char *buffer, int remsize, void *data)
+{
+    u_int8_t value = *((u_int8_t *)data);
+
+    if (value) {
+        APPEND_LOG("U", 1);
+    } else {
+        APPEND_LOG("-", 1);
+    }
+    return remsize;
+}
+
+int 
+append_ipaddr_t(char *buffer, int remsize, void *data)
+{
+    char ip[INET_ADDRSTRLEN];
+    u_int32_t ip_net_byteorder ; 
+
+    ip_net_byteorder = htonl( *((u_int32_t *) data) );
+
+    inet_ntop(AF_INET, (void *) &ip_net_byteorder, (char *)ip, INET_ADDRSTRLEN);
+    arch_log_msg(ARCH_LG_DEBUG, "%s append_ip_addr : ipaddr %s\n", PLUGIN_NAME, ip);
+
+    APPEND_LOG(ip, strlen(ip));
+
+    return remsize;
+}
+
+
+int 
+append_date_t(char *buffer, int remsize, void *data)
+{
+    char date_time[64];
+
+    strftime(date_time, sizeof(date_time), FMT_DATE_NORMAL, localtime((time_t *)data));
+    
+    arch_log_msg(ARCH_LG_DEBUG, "%s append_date_time : %s\n", PLUGIN_NAME, date_time);
+    APPEND_LOG(date_time, strlen(date_time));
+    return remsize;
+
+}
+
+int 
+append_char_array(char *buffer, int remsize, void *data)
+{
+    char *tmp = (char *)data;
+    unsigned int len;
+
+    len = strlen(tmp);
+    if(len) {
+	arch_log_msg(ARCH_LG_DEBUG, "%s append_char_array : %s\n", PLUGIN_NAME, tmp);
+	APPEND_LOG(tmp, strlen(tmp));
+    } else {
+	arch_log_msg(ARCH_LG_DEBUG, "%s append_char_array : %s\n", PLUGIN_NAME, "0");
+	APPEND_LOG("0", 1);
+    }
+    return remsize;
+}
+
+static int
+__append_u_int32_t(char *buffer, int remsize, u_int32_t value)
+{
+    char tmp[16];
+    int len;
+    
+    len = snprintf(tmp, sizeof(tmp), "%d", value);
+    APPEND_LOG(tmp, len);
+    return remsize;
+}
+
+int 
+append_u_int32_t(char *buffer, int remsize, void *data)
+{
+    u_int32_t value = *((u_int32_t *)data);
+
+    arch_log_msg(ARCH_LG_DEBUG, "%s append_u_int32_t : %d\n", PLUGIN_NAME, value);
+
+    return __append_u_int32_t(buffer, remsize, value);
+}
+
+int 
+append_u_int16_t(char *buffer, int remsize, void *data)
+{
+    u_int32_t value = *((u_int16_t *)data);
+
+    arch_log_msg(ARCH_LG_DEBUG, "%s append_u_int16_t : %d\n", PLUGIN_NAME, value);
+
+    return __append_u_int32_t(buffer, remsize, value);
+}
+
+int
+append_u_int8_t(char *buffer, int remsize, void *data)
+{
+    u_int32_t value = *((u_int8_t *)data);
+
+    arch_log_msg(ARCH_LG_DEBUG, "%s append_u_int8_t : %d\n", PLUGIN_NAME, value);
+
+    return __append_u_int32_t(buffer, remsize, value);
+}
+
+static int
+__append_int32_t(char *buffer, int remsize, int32_t value)
+{
+    char tmp[16];
+    int len;
+
+    len = snprintf(tmp, sizeof(tmp), "%d", value);
+
+    APPEND_LOG(tmp, len);
+    return remsize;
+}
+
+int
+append_int32_t(char *buffer, int remsize, void *data)
+{
+    int32_t value = *((int32_t *)data);
+
+    arch_log_msg(ARCH_LG_DEBUG, "%s append_int32_t : %d\n", PLUGIN_NAME, value);
+
+    return __append_int32_t(buffer, remsize, value);
+}
+
+struct _std_event_vars_arch
+	std_event_vars_arch[] = {
+

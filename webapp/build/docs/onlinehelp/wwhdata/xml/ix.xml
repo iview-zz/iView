@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WebWorksHelpIX version="5.0" xmlns="urn:WebWorks-Help-Index-Schema">
+  <g t="A" o="002">
+    <i t="Accessing Cyberoam iView">
+      <j l="2" />
+      <i t="Log out procedure">
+        <j l="2#9000021" />
+      </i>
+    </i>
+    <i t="Application">
+      <i t="Add Application">
+        <j l="1213#9000502" />
+      </i>
+      <i t="Add Application Identifier">
+        <j l="1213#9000514" />
+      </i>
+      <i t="Delete Application">
+        <j l="1213#9000573" />
+      </i>
+      <i t="Delete Application Identifier">
+        <j l="1213#9000582" />
+      </i>
+      <i t="Update Application">
+        <j l="1213#9000545" />
+      </i>
+    </i>
+    <i t="Application Group">
+      <j l="1213" />
+      <i t="Add Application Group">
+        <j l="1213#9000533" />
+      </i>
+      <i t="Delete Application Group">
+        <j l="1213#9000592" />
+      </i>
+      <i t="Reset to Default Application Group">
+        <j l="1213#9000620" />
+      </i>
+      <i t="Update Application Group">
+        <j l="1213#9000560" />
+      </i>
+      <i t="Update Application Group Membership">
+        <j l="1213#9000604" />
+      </i>
+    </i>
+    <i t="Archives">
+      <j l="1227" />
+      <i t="Backup Management">
+        <j l="1230#9001293" />
+      </i>
+      <i t="Download Backup Files">
+        <j l="1230#9001317" />
+      </i>
+      <i t="Load Archive">
+        <j l="1228#9001169" />
+      </i>
+      <i t="Restore Backup Files">
+        <j l="1229#9001279" />
+        <j l="1230#9001332" />
+      </i>
+      <i t="Search Archives">
+        <j l="1229" />
+      </i>
+    </i>
+    <i t="Audit Logs">
+      <j l="1226" />
+      <i t="Category-Event Messages">
+        <j l="1226#9000995" />
+      </i>
+    </i>
+  </g>
+  <g t="B" o="002">
+    <i t="Bookmark Management">
+      <j l="1220" />
+    </i>
+  </g>
+  <g t="C" o="002">
+    <i t="Custom View">
+      <j l="1215" />
+      <i t="Add Bookmark Group">
+        <j l="1221" />
+      </i>
+      <i t="Add Custom View">
+        <j l="1216" />
+      </i>
+      <i t="Delete Bookmark Group">
+        <j l="1222" />
+      </i>
+      <i t="Delete Custom View">
+        <j l="1216#9000689" />
+      </i>
+      <i t="Update Custom View">
+        <j l="1216#9000675" />
+      </i>
+    </i>
+  </g>
+  <g t="D" o="002">
+    <i t="Dashboards">
+      <j l="3" />
+      <i t="Custom Dashboard">
+        <j l="11" />
+        <i t="Email Address Dashboard">
+          <j l="14" />
+          <i t="Top Mails Received From">
+            <j l="14#9000697" />
+          </i>
+          <i t="Top Mails Sent to">
+            <j l="14#9000682" />
+          </i>
+          <i t="Top Recipient Destinations">
+            <j l="14#9000756" />
+          </i>
+          <i t="Top Recipient Hosts">
+            <j l="14#9000726" />
+          </i>
+          <i t="Top Recipient Users">
+            <j l="14#9000786" />
+          </i>
+          <i t="Top Sender Destinations">
+            <j l="14#9000741" />
+          </i>
+          <i t="Top Sender Hosts">
+            <j l="14#9000712" />
+          </i>
+          <i t="Top Sender Users">
+            <j l="14#9000771" />
+          </i>
+          <i t="Top Spam Received">
+            <j l="14#9000800" />
+          </i>
+          <i t="Top Spam Sent">
+            <j l="14#9000814" />
+          </i>
+        </i>
+        <i t="Source Host Dashboard">
+          <j l="13" />
+          <i t="Top Application Group">
+            <j l="13#9000542" />
+          </i>
+          <i t="Top Attacks Generated">
+            <j l="13#9000655" />
+          </i>
+          <i t="Top Attacks Received">
+            <j l="13#9000642" />
+          </i>
+          <i t="Top Denied Application Group">
+            <j l="13#9000614" />
+          </i>
+          <i t="Top Denied Categories">
+            <j l="13#9000628" />
+          </i>
+          <i t="Top Files downloaded via FTP">
+            <j l="13#9000588" />
+          </i>
+          <i t="Top Files uploaded via FTP">
+            <j l="13#9000572" />
+          </i>
+          <i t="Top Users">
+            <j l="13#9000603" />
+          </i>
+          <i t="Top Web Categories">
+            <j l="13#9000557" />
+          </i>
+        </i>
+        <i t="User Dashboard">
+          <j l="12" />
+          <i t="Top Application Group">
+            <j l="12#9000418" />
+          </i>
+          <i t="Top Categories">
+            <j l="12#9000433" />
+          </i>
+          <i t="Top Denied Application Group">
+            <j l="12#9000488" />
+          </i>
+          <i t="Top Denied Categories">
+            <j l="12#9000502" />
+          </i>
+          <i t="Top Files downloaded via FTP">
+            <j l="12#9000461" />
+          </i>
+          <i t="Top Files uploaded via FTP">
+            <j l="12#9000448" />
+          </i>
+          <i t="Top Hosts">
+            <j l="12#9000474" />
+          </i>
+          <i t="Top Web Viruses">
+            <j l="12#9000516" />
+          </i>
+        </i>
+      </i>
+      <i t="Cyberoam iView Dashboard">
+        <j l="10" />
+        <i t="CPU Usage">
+          <j l="10#9000286" />
+        </i>
+        <i t="Disk Usage">
+          <j l="10#9000316" />
+        </i>
+        <i t="Event Frequency">
+          <j l="10#9000331" />
+        </i>
+        <i t="Memory Usage">
+          <j l="10#9000301" />
+        </i>
+      </i>
+      <i t="Device Dashboard">
+        <j l="6" />
+        <i t="Allowed Traffic Summary">
+          <j l="6#9000148" />
+        </i>
+        <i t="Content Denied Summary">
+          <j l="6#9000260" />
+        </i>
+        <i t="Denied Traffic Summary">
+          <j l="6#9000157" />
+        </i>
+        <i t="Firewall Denied Summary">
+          <j l="6#9000250" />
+        </i>
+        <i t="FTP Traffic Summary">
+          <j l="6#9000199" />
+        </i>
+        <i t="IDP Attacks Summary">
+          <j l="6#9000232" />
+        </i>
+        <i t="Mail Traffic Summary">
+          <j l="6#9000185" />
+        </i>
+        <i t="Spam Summary">
+          <j l="6#9000222" />
+        </i>
+        <i t="Virus Summary">
+          <j l="6#9000212" />
+        </i>
+        <i t="Web Traffic Summary">
+          <j l="6#9000172" />
+        </i>
+      </i>
+      <i t="Main Dashboard">
+        <j l="4" />
+        <i t="Allowed Traffic">
+          <j l="5#9000085" />
+        </i>
+        <i t="Denied Traffic">
+          <j l="5#9000098" />
+        </i>
+      </i>
+    </i>
+    <i t="Device">
+      <j l="1212" />
+      <i t="Activate Device">
+        <j l="1212#9000426" />
+      </i>
+      <i t="Add Device">
+        <j l="1212#9000413" />
+      </i>
+      <i t="Deactivate Device">
+        <j l="1212#9000446" />
+      </i>
+      <i t="Delete Device">
+        <j l="1212#9000457" />
+      </i>
+      <i t="Device Auto Discovery">
+        <j l="1212#9000397" />
+      </i>
+      <i t="Update Device">
+        <j l="1212#9000434" />
+      </i>
+    </i>
+    <i t="Device Group">
+      <j l="1211" />
+      <i t="Add Device Group">
+        <j l="1211#9000307" />
+      </i>
+      <i t="Delete Device Group">
+        <j l="1211#9000341" />
+      </i>
+      <i t="Update Device Group">
+        <j l="1211#9000328" />
+      </i>
+    </i>
+  </g>
+  <g t="L" o="002">
+    <i t="Logs">
+      <j l="1223" />
+    </i>
+  </g>
+  <g t="M" o="002">
+    <i t="Mail Server Configuration">
+      <j l="1214" />
+    </i>
+  </g>
+  <g t="P" o="002">
+    <i t="Port">
+      <j l="1224" />
+    </i>
+  </g>
+  <g t="R" o="002">
+    <i t="Report Notification">
+      <j l="1217" />
+      <i t="Add Report Notification">
+        <j l="1217#9000715" />
+      </i>
+      <i t="Delete Report Notification">
+        <j l="1217#9000744" />
+      </i>
+      <i t="Update Report Notification">
+        <j l="1217#9000732" />
+      </i>
+    </i>
+  </g>
+  <g t="U" o="002">
+    <i t="User">
+      <j l="1210" />
+      <i t="Add User">
+        <j l="1210#9000240" />
+      </i>
+      <i t="Delete User">
+        <j l="1210#9000272" />
+      </i>
+      <i t="Update User">
+        <j l="1210#9000260" />
+      </i>
+      <i t="User Privileges">
+        <j l="1210#9000050" />
+      </i>
+    </i>
+    <i t="Using Online Help">
+      <j l="1" />
+    </i>
+  </g>
+</WebWorksHelpIX>

@@ -1,0 +1,5 @@
+Client side library for garner.
+
+libgarner.so - Not threadsafe.
+libgarner_r.so - Threadsafe.
+

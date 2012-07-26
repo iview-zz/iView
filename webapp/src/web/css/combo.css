@@ -1,0 +1,143 @@
+/* ***********************************************************************
+*  Cyberoam iView - The Intelligent logging and reporting solution that 
+*  provides network visibility for security, regulatory compliance and 
+*  data confidentiality 
+*  Copyright  (C ) 2009  Elitecore Technologies Ltd.
+*  
+*  This program is free software: you can redistribute it and/or modify 
+*  it under the terms of the GNU General Public License as published by 
+*  the Free Software Foundation, either version 3 of the License, or
+*  (at your option) any later version.
+*  
+*  This program is distributed in the hope that it will be useful, but 
+*  WITHOUT ANY WARRANTY; without even the implied warranty of 
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU 
+*  General Public License for more details.
+*  
+*  You should have received a copy of the GNU General Public License 
+*  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*  
+*  The interactive user interfaces in modified source and object code 
+*  versions of this program must display Appropriate Legal Notices, as 
+*  required under Section 5 of the GNU General Public License version 3.
+*  
+*  In accordance with Section 7(b) of the GNU General Public License 
+*  version 3, these Appropriate Legal Notices must retain the display of
+*   the "Cyberoam Elitecore Technologies Initiative" logo.
+*************************************************************************/
+
+div.Main_Combo_container {
+	position: relative;
+	float:left;
+	margin-top:4px;
+	margin-right:5px;
+	border:none;
+	z-index:99;
+}
+div.Main_Combo_select {
+	position: absolute;
+	float: left;
+	overflow: hidden;
+	background-image: url(../images/select_device_button.jpg);
+	background-repeat: no-repeat;
+	height: 42px;
+	width:182px;
+}
+.Combo_item_single{
+	height: 20px;
+	width: 100%;
+	float: left;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.Combo_item_single_hilite{
+	background-color: #EEEEEE;
+	height: 20px;
+	width: 100%;
+	float: left;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.Combo_body {
+	text-align: left;
+	position: absolute;
+	overflow:hidden;
+	z-index:99;
+}
+.Combo_item{
+	background: #FFFFFF url(../images/checkbox.png) no-repeat scroll 0 0;
+	height: 17px;
+	*height: 20px;
+	width: 100%;
+	float: left;
+	overflow: hidden;
+	white-space: nowrap;
+	padding-left:20px;
+	padding-top:3px;
+	z-index:99;
+	font-family:  Arial, Verdana,Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight:600;
+	color: #374953;
+	border-left: 1px solid rgb(154, 165, 171);
+	border-right: 1px solid rgb(154, 165, 171);
+}
+.Combo_item_hilite{
+	background: #FFFFFF url(../images/checkbox.png) no-repeat scroll 0 -25px;
+	height: 17px;
+	*height: 20px;
+	width: 100%;
+	float: left;
+	overflow: hidden;
+	white-space: nowrap;
+	padding-left:20px;
+	padding-top:3px;
+	z-index:99;
+	font-family:  Arial, Verdana,Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight:600;
+	color: #374953;
+	border-left: 1px solid rgb(154, 165, 171);
+	border-right: 1px solid rgb(154, 165, 171);
+}
+.Combo_item_select{
+	background: #FFFFFF url(../images/checkbox.png) no-repeat scroll 0 -50px;
+	height: 17px;
+	*height: 20px;
+	width: 100%;
+	float: left;
+	overflow: hidden;
+	white-space: nowrap;
+	padding-left:20px;
+	padding-top:3px;
+	z-index:99;
+	font-family:  Arial, Verdana,Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight:600;
+	color: #374953;
+	border-left: 1px solid rgb(154, 165, 171);
+	border-right: 1px solid rgb(154, 165, 171);
+}
+.Combo_item_select_hilite{
+	background: #FFFFFF url(../images/checkbox.png) no-repeat scroll 0 -75px;
+	height: 17px;
+	*height: 20px;
+	width: 100%;
+	float: left;
+	overflow: hidden;
+	white-space: nowrap;
+	padding-left:20px;
+	padding-top:3px;
+	z-index:99;
+	font-family:  Arial, Verdana,Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight:600;
+	color: #374953;
+	border-left: 1px solid rgb(154, 165, 171);
+	border-right: 1px solid rgb(154, 165, 171);
+}
+.hidden {
+	position: absolute;
+	visibility: hidden;
+}
+

@@ -1,0 +1,239 @@
+/* ***********************************************************************
+*  Cyberoam iView - The Intelligent logging and reporting solution that 
+*  provides network visibility for security, regulatory compliance and 
+*  data confidentiality 
+*  Copyright  (C ) 2009  Elitecore Technologies Ltd.
+*  
+*  This program is free software: you can redistribute it and/or modify 
+*  it under the terms of the GNU General Public License as published by 
+*  the Free Software Foundation, either version 3 of the License, or
+*  (at your option) any later version.
+*  
+*  This program is distributed in the hope that it will be useful, but 
+*  WITHOUT ANY WARRANTY; without even the implied warranty of 
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU 
+*  General Public License for more details.
+*  
+*  You should have received a copy of the GNU General Public License 
+*  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*  
+*  The interactive user interfaces in modified source and object code 
+*  versions of this program must display Appropriate Legal Notices, as 
+*  required under Section 5 of the GNU General Public License version 3.
+*  
+*  In accordance with Section 7(b) of the GNU General Public License 
+*  version 3, these Appropriate Legal Notices must retain the display of
+*   the "Cyberoam Elitecore Technologies Initiative" logo.
+*************************************************************************/
+
+/*div.main_data {
+	position: relative;
+	width:200px;
+}
+div.main_menu {
+	background-color: #96AEBE;
+	background-image: url(../images/menu_expand.gif);
+	background-repeat: no-repeat;
+	background-position: right 3px;
+	padding-left: 15px;
+	cursor: pointer;
+	font-family:  arial, tahoma,san-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+	font-weight: bolder;
+	text-transform: capitalize;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	margin-top: 5px;
+	border: 1px solid #5D7482;
+}
+div.second_data {
+	z-index: 2;
+	display: block;
+	border: 1px solid #5D7482;
+	background-color: #DDE4EA;
+}
+div.hide {
+	visibility: hidden;
+	position: absolute;
+}
+div.second_menu {
+	background-image: url(../images/expand.gif);
+	background-repeat: no-repeat;
+	background-position: 5px;
+	padding-left: 20px;
+	cursor: pointer;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	overflow: hidden;
+}
+div.second_menu_leaf {
+	background-image: url(../images/thirdmenu.GIF);
+	background-repeat: no-repeat;
+	background-position: 5px;
+	padding-left: 20px;
+	cursor: pointer;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	overflow: hidden;
+}
+
+div.third_menu {
+	background-position: 20px;
+	padding-left: 35px;
+	cursor: pointer;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background-image: url(../images/thirdmenu.GIF);
+	background-repeat: no-repeat;
+}
+div.third_data {
+	overflow: hidden;
+}
+div.second_menu:hover{
+	background-color:#b9c2ca;
+}
+div.third_menu:hovers{
+	background-color:#b9c2ca;
+}
+div.menu_link {
+	background-color: #E4E4E4;
+	padding-left: 15px;
+	cursor: pointer;
+	border-bottom-width: thin;
+	border-bottom-style: solid;
+	border-bottom-color: #5D7482;
+	border-left-width: thin;
+	border-left-style: solid;
+	border-left-color: #5D7482;	
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #5D7482;
+}
+span.spanlink{
+	font-size: 11px;
+	font-weight: bold;
+	font-family:  arial, tahoma,san-serif;
+}
+
+div.third_menu:hover {
+	background-color: #CFCFCF;
+	cursor: pointer;
+}
+*/
+
+ul.level1{
+	padding:0px;
+	margin:0px;
+	width: 200px;
+}
+li.level1unSel{
+	background: #96AEBE url(../images/menu_expand.jpg) right 5px no-repeat;
+	border:1px solid #5D7482;
+	color:#FFFFFF;
+	cursor:pointer;
+	font-family:arial,tahoma,san-serif;
+	font-size:11px;
+	font-weight:bolder;
+	margin-top:5px;
+	padding: 3px 0px 3px 15px;
+	text-transform:capitalize;
+}
+li.level1sel{
+	background: #96AEBE url(../images/menu_collapse.jpg) right 5px no-repeat;
+	border:1px solid #5D7482;
+	color:#FFFFFF;
+	cursor:pointer;
+	font-family:arial,tahoma,san-serif;
+	font-size:11px;
+	font-weight:bolder;
+	margin-top:5px;
+	padding: 3px 0px 3px 15px;
+	text-transform:capitalize;
+}
+
+.level2{
+	list-style:none;
+	padding:0px;
+	margin:0px;
+	background-color:#DDE4EA;
+}
+ul.level2{
+	border-bottom: 1px solid #5D7482;
+	border-left: 1px solid #5D7482;
+	border-right: 1px solid #5D7482;
+}
+li.level2selExp{
+	background: url(../images/collapse.png) 5px no-repeat;
+	cursor:pointer;
+	padding:2px 0px 2px 20px;
+	color:#E47440;
+	font-family:arial,tahoma,san-serif;
+	font-size:11px;
+	font-weight:bolder;
+}
+li.level2selCol{
+	background: url(../images/inactiveexpand.png) 5px no-repeat;
+	cursor:pointer;
+	padding:2px 0px 2px 20px;
+	color:#E47440;
+	font-family:arial,tahoma,san-serif;
+	font-size:11px;
+	font-weight:bolder;
+}
+li.level2unselExp{
+	background: url(../images/collapse.png) 5px no-repeat;
+	cursor:pointer;
+	padding:2px 0px 2px 20px;
+	color:#374953;
+	font-family:arial,tahoma,san-serif;
+	font-size:11px;
+	font-weight:bolder;
+}
+li.level2unselCol{
+	background: url(../images/expand.gif) 5px no-repeat;
+	cursor:pointer;
+	padding:2px 0px 2px 20px;
+	color:#374953;
+	font-family:arial,tahoma,san-serif;
+	font-size:11px;
+	font-weight:bolder;
+}
+
+.level3{
+	list-style:none;
+	padding:0px;
+	margin:0px;
+}
+li.level3{
+	background: url(../images/thirdmenu.GIF) 20px no-repeat;
+	cursor:pointer;
+	padding:2px 0px 2px 35px;
+	color:#374953;
+	font-family:arial,tahoma,san-serif;
+	font-size:11px;
+	font-weight:bolder;
+}
+
+a.menuitem:link {
+	text-decoration:none;
+	color:#374953;
+}
+a.menuitem:visited {
+	text-decoration:none;
+	color:#374953;
+}
+a.menuitem:hover {
+	text-decoration:none;
+	color:#374953;
+}
+a.menuitem:active {
+	text-decoration:none;
+	color:#374953;
+}
+div.main_data{
+	position:inherit;
+}
+

@@ -1,0 +1,353 @@
+  { 0, 0, 0,  0} /* the last null-terminated node */
+
+}; /* end of structure */
+
+const struct _std_event_vars_pg*
+get_var_by_name_pg(const char *name)
+{
+    int i;
+    for(i=0; std_event_vars_pg[i].variable; i++) {
+	if(strcmp(std_event_vars_pg[i].variable, name) == 0) {
+	    return &std_event_vars_pg[i];
+	}
+    }
+    return NULL;
+}
+
+/* SETTINGS CONFIGURATION ROUTINES */
+
+static	char *g_server_addr	= NULL;
+static	char *g_server_port	= NULL;
+static	char *g_connect_options	= NULL;
+static	char *g_database_name	= NULL;
+static	char *g_username	= NULL;
+static	char *g_password	= NULL;
+static	u_int32_t g_reconnect_interval = CONFIG_DEFAULT_RECONNECT_INTERVAL_SEC;
+
+void
+config_set_server_addr(char *server_addr)
+{
+    if(server_addr) {
+	if(g_server_addr) {
+	    free(g_server_addr);
+	}
+	g_server_addr = server_addr ;
+	oppostgres_log_msg(LG_DEBUG, "config_set_server_addr: ServerAddress set to '%s'\n", g_server_addr);
+    }
+    return ;
+}
+char *
+config_get_server_addr(void)
+{
+    if(g_server_addr) {
+        return g_server_addr ;
+    } else {
+	return CONFIG_DEFAULT_SERVER_ADDR ;
+    }
+}
+
+void
+config_set_server_port(char *server_port)
+{
+    if(server_port) {
+	if(g_server_port) {
+	    free(g_server_port);
+	}
+	g_server_port = server_port ;
+	oppostgres_log_msg(LG_DEBUG, "config_set_server_port: ServerPort set to '%s'\n", g_server_port);
+    }
+    return ;
+}
+char *
+config_get_server_port(void)
+{
+    return g_server_port ;
+}
+
+void
+config_set_connect_options(char *connect_options)
+{
+    if(connect_options) {
+	if(g_connect_options) {
+	    free(g_connect_options);
+	}
+	g_connect_options = connect_options ;
+	oppostgres_log_msg(LG_DEBUG, "config_set_connect_options: ConnectOptions set to '%s'\n", g_connect_options);
+    }
+    return ;
+}
+char *
+config_get_connect_options(void)
+{
+    return g_connect_options ;
+}
+
+void
+config_set_database_name(char *db_name)
+{
+    if(db_name) {
+	if(g_database_name) {
+	    free(g_database_name);
+	}
+	g_database_name = db_name;
+	oppostgres_log_msg(LG_DEBUG, "config_set_database_name: Databasename set to '%s'\n", g_database_name);
+    }
+    return ;
+}
+char *
+config_get_database_name(void)
+{
+    if(g_database_name) {
+	return g_database_name ;
+    } else {
+	return CONFIG_DEFAULT_DATABASE_NAME ;
+    }
+}
+
+void
+config_set_username(char *username)
+{
+    if(username) {
+	if(g_username) {
+	    free(g_username);
+	}
+	g_username = username ;
+	oppostgres_log_msg(LG_DEBUG, "config_set_username: Username set to '%s'\n", g_username);
+    }
+    return ;
+}
+char *
+config_get_username(void)
+{
+    return g_username ;
+}
+
+void
+config_set_password(char *password)
+{
+    if(password) {
+	if(g_password) {
+	    free(g_password);
+	}
+	g_password = password ;
+	oppostgres_log_msg(LG_DEBUG, "config_set_password: Password set to '%s'\n", g_password);
+    }
+    return ;
+}
+char *
+config_get_password(void)
+{
+    return g_password ;
+}
+
+void
+config_set_reconnect_interval(u_int32_t interval_sec)
+{
+    g_reconnect_interval = interval_sec ;
+    oppostgres_log_msg(LG_DEBUG, "config_set_reconnect_interval: Reconnect Interval set to '%d'\n", 
+										g_reconnect_interval);
+    
+    return ;
+}
+u_int32_t
+config_get_reconnect_interval(void)
+{
+    return g_reconnect_interval ;
+}
+
+/* TABLEFORMATTER SUPPORT ROUTINES */
+
+void
+free_table_format(struct _table_format *table_format)
+{
+    struct _table_format *next;
+
+    while(table_format) {
+        next = table_format->next;
+
+        if(table_format->cname) {
+	    free(table_format->cname);
+	}
+
+        if(table_format->datalen) {
+	    free((char *)table_format->data);
+	}
+        free(table_format);
+	
+	table_format = next;
+    }
+    return;
+}
+
+static struct _table_format *
+new_listnode(char *string)
+{
+    struct _table_format *table_format;
+    const struct _std_event_vars_pg *sev;
+    char *tok, *next;
+
+    oppostgres_log_msg(LG_DEBUG, "new_listnode : string=%s\n", string);
+    table_format = calloc(1, sizeof(struct _table_format));
+
+	/* get column name */
+    tok = strtok_r(string, "#", &next);
+    if(tok) {
+	table_format->cname = strdup(tok);
+	oppostgres_log_msg(LG_DEBUG, "new_listnode : column name=%s\n", tok);
+    } else {
+	oppostgres_log_msg(LG_ERR, "new_listnode : Invalid table format string\n");
+	free(table_format) ;
+	return NULL;
+    }
+
+    /* get column data source definition */
+    tok = strtok_r(NULL, "#", &next);
+    if(tok) {
+	sev = get_var_by_name_pg(tok);
+	if (sev) {
+    	    table_format->data = (void *)sev;
+            oppostgres_log_msg(LG_DEBUG, "new_listnode : sev->variable=%s\n", sev->variable);
+  	} else {
+            table_format->data = strdup(tok);
+            table_format->datalen = strlen(tok);
+    	}
+    } else {
+	oppostgres_log_msg(LG_ERR, "new_listnode : Invalid table format string\n");
+        free(table_format->cname);
+        free(table_format);
+        return NULL;
+    }
+    return table_format;
+}
+
+struct _table_format*
+prepare_table_format(char *string)
+{
+    struct _table_format *head=NULL,*tail=NULL,*tmp;
+    char *tok, *next;
+
+    tok = strtok_r(string, "%", &next);
+    while(tok) {
+	if(!tail) {
+	    tmp = new_listnode(tok);
+	    if(tmp) {
+		head = tail = tmp ;
+	    } else {
+	    	goto release_n_return;
+	    }
+        } else {
+	    tmp = new_listnode(tok);
+	    if(tmp) {
+		tail->next = tmp ;
+		tail = tail->next;
+	    } else {
+		goto release_n_return;
+	    }
+        }
+        tok = strtok_r(NULL, "%", &next);
+    }
+    return head;
+
+release_n_return:
+
+    free_table_format(head);
+    return NULL;
+}
+
+struct _table *g_table_list = NULL;
+
+struct _table *
+new_table()
+{
+    struct _table *table;
+
+    table = calloc(1, sizeof(struct _table));
+
+    return table;
+}
+
+struct _table *
+get_table_by_name(char *name)
+{
+    struct _table *table = g_table_list;
+
+    while (table) {
+        if (!strcasecmp(table->name, name)) {
+	    return table;
+        }
+        table = table->next;
+    }
+
+    return NULL;
+}
+
+void
+insert_table_in_list(struct _table *table)
+{
+    table->next = g_table_list;
+    g_table_list = table;
+
+    return;
+}
+
+void
+free_table_list()
+{
+    struct _table *table = g_table_list;
+    struct _table *next;
+
+    while(table) {
+        next = table->next;
+        
+	free_table_format(table->tableformat);
+        
+	free(table->name);
+	
+	if(table->createquery) {
+	    free(table->createquery);
+	}
+	if(table->insertquery) {
+	    free(table->insertquery);
+	}
+	if(table->param_types) {
+	    free(table->param_types);
+	}
+	if(table->param_values) {
+	    free(table->param_values);
+	}
+	if(table->param_lengths) {
+	    free(table->param_lengths);
+	}
+	if(table->param_formats) {
+	    free(table->param_formats);
+	}
+	
+	free(table);
+
+	table = next;
+    }
+
+    return;
+}
+
+int
+init_table_list()
+{
+    if(init_insert_query(g_table_list) < 0) {
+	return -1;
+    }
+
+    if(init_bind_param(g_table_list) < 0) {
+	return -1;
+    }
+
+    return 0;
+}
+
+void
+oppostgres_cleanup_parsed_state()
+{
+    free_table_list();
+    return ;
+}
+

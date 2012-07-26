@@ -1,0 +1,59 @@
+  { 0, 0, 0, 0, 0,  0} /* the last null-terminated node */
+
+}; /* end of structure */
+
+#include <string.h>
+#include <stdlib.h>
+#include "garner.h"
+
+const struct _std_event_vars*
+get_var_by_name(const char *name)
+{
+    int i;
+    for(i=0; std_event_vars[i].variable; i++) {
+	if(strcmp(std_event_vars[i].variable, name) == 0) {
+	    return &std_event_vars[i];
+	}
+    }
+    return NULL;
+}
+
+struct _sev_data *
+new_sev_data(const struct _std_event_vars *sev, const char *string)
+{
+    int error=0;
+    struct _sev_data *sev_data;
+    sev_data = calloc(1, sizeof(struct _sev_data));
+
+    sev_data->sev = sev;
+    sev_data->data = sev->typecast(string, &error);
+
+    if(error) {
+	/* there was some type mismatch */
+	free(sev_data);
+	return NULL;
+    }
+
+    return sev_data;
+}
+
+void free_sev_data(void *data)
+{
+    struct _sev_data *sev_data = data;
+    if(sev_data) {
+	xassert(sev_data->sev != NULL);
+	sev_data->sev->free(sev_data->data);
+	free(sev_data);
+    }
+}
+
+int compare_std_event_var(void *data, void *arg, char op)
+{
+    /* std_event is in data */
+    u_int8_t *se = data;
+
+    struct _sev_data *sev_data = arg;
+
+    log_message(LG_DEBUG, "comparing: %s\n",sev_data->sev->variable); 
+    return sev_data->sev->compare(se + sev_data->sev->offset, sev_data->data, op);
+}
